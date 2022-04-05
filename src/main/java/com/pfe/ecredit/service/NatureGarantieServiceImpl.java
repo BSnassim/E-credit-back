@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pfe.ecredit.domain.NatureGarantie;
-import com.pfe.ecredit.repositories.NatureGarantieRepository;
+import com.pfe.ecredit.domain.SiNatureGarantie;
+import com.pfe.ecredit.repositories.SiNatureGarantieRepository;
 
 @Service
 public class NatureGarantieServiceImpl implements NatureGarantieService {
 
 	@Autowired
-	private NatureGarantieRepository repo;
+	private SiNatureGarantieRepository repo;
 
 //	@Autowired
 //	private ModelMapper modelMapper;
@@ -28,7 +28,7 @@ public class NatureGarantieServiceImpl implements NatureGarantieService {
 //	}
 	
 	@Override
-	public List<NatureGarantie> findAllNatureGarantie() {
+	public List<SiNatureGarantie> findAllNatureGarantie() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 

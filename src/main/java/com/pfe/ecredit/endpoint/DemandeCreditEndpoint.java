@@ -13,34 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.Demande;
+import com.pfe.ecredit.domain.DemandeCredit;
 import com.pfe.ecredit.service.DemandeService;
 
 @RequestMapping("/credit")
 @CrossOrigin
 @RestController
-public class DemandeEndpoint {
+public class DemandeCreditEndpoint {
 	
 	@Autowired(required=false)
 	private DemandeService DemandeService;
 	
 	@GetMapping("/demande")
-	public List<Demande> findAllDemande(){
+	public List<DemandeCredit> findAllDemande(){
 		return DemandeService.findAllDemande();
 	}
 	
 	@GetMapping("/demande/{id}")
-	public Demande findDemande(@PathVariable Integer id) {
+	public DemandeCredit findDemande(@PathVariable Integer id) {
 		return DemandeService.findDemande(id);
 	}
 	
 	@PostMapping("/demande")
-	public void saveDemande(@RequestBody Demande Demande) {
+	public void saveDemande(@RequestBody DemandeCredit Demande) {
 		DemandeService.saveDemande(Demande);
 	}
 	
 	@PutMapping("/demande")
-	public void updateDemande(@RequestBody Demande Demande) {
+	public void updateDemande(@RequestBody DemandeCredit Demande) {
 		DemandeService.UpdateDemande(Demande);
 	}
 	

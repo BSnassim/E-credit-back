@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.TypeGarantie;
+import com.pfe.ecredit.domain.SiTypeGarantie;
 import com.pfe.ecredit.service.TypeGarantieService;
 
 @RequestMapping("/credit")
@@ -20,7 +20,7 @@ public class TypeGarantieEndpoint {
 	TypeGarantieService typeGarantieService;
 
 	@GetMapping("/typeGarantie")
-	public List<TypeGarantie> fetchDetails() {
+	public List<SiTypeGarantie> fetchDetails() {
 		return typeGarantieService.findAllTypeGarantie();
 	}
 

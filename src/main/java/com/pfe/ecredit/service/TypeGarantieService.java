@@ -2,13 +2,13 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
-import com.pfe.ecredit.domain.TypeGarantie;
+import com.pfe.ecredit.domain.SiTypeGarantie;
 
 
 
 public interface TypeGarantieService {
 
-	List<TypeGarantie> findAllTypeGarantie();
+	List<SiTypeGarantie> findAllTypeGarantie();
 
 	
 }

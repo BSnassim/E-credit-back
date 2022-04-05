@@ -6,26 +6,25 @@ package com.pfe.ecredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.pfe.ecredit.domain.TypeDocuments;
-import com.pfe.ecredit.repositories.TypeDocumentsRepository;
+import com.pfe.ecredit.domain.SiTypeDocuments;
+import com.pfe.ecredit.repositories.SiTypeDocumentsRepository;
 
-/**
- * @author Nassim.BenSalah
- *
- */
+
+@Service
 public class TypeDocumentsServiceImpl implements TypeDocumentsService {
 
 	@Autowired
-	private TypeDocumentsRepository repo;
+	private SiTypeDocumentsRepository repo;
 
 	@Override
-	public List<TypeDocuments> findAllDocuments() {
-		return (repo.findAll() != null)? repo.findAll() : null;
+	public List<SiTypeDocuments> findAllDocuments() {
+		return (repo.findAll() != null) ? repo.findAll() : null;
 	}
 
 	@Override
-	public TypeDocuments findDocument(Integer id) {
-		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
+	public SiTypeDocuments findDocument(Integer id) {
+		return (repo.findById(id).isPresent()) ? repo.findById(id).get() : null;
 	}
 }

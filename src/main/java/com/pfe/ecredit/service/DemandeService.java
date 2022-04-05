@@ -2,14 +2,14 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
-import com.pfe.ecredit.domain.Demande;
+import com.pfe.ecredit.domain.DemandeCredit;
 
 public interface DemandeService {
 	
-	public List<Demande> findAllDemande();
-	public Demande findDemande(Integer id);
-	public void saveDemande(Demande dem);
-	public void UpdateDemande(Demande dem);
+	public List<DemandeCredit> findAllDemande();
+	public DemandeCredit findDemande(Integer id);
+	public void saveDemande(DemandeCredit dem);
+	public void UpdateDemande(DemandeCredit dem);
 	public void DeleteDemande(Integer id);
 
 }

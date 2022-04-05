@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.NatureGarantie;
+import com.pfe.ecredit.domain.SiNatureGarantie;
 import com.pfe.ecredit.service.NatureGarantieService;
 
 @RequestMapping("/credit")
@@ -20,7 +20,7 @@ public class NatureGarantieEndpoint {
 	private NatureGarantieService natureGarantieService;
 
 	@GetMapping("/natureGarantie")
-	public List<NatureGarantie> fetchDetails() {
+	public List<SiNatureGarantie> fetchDetails() {
 		return natureGarantieService.findAllNatureGarantie();
 	}
 

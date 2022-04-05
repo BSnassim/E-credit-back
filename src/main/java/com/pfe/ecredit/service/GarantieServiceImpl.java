@@ -4,32 +4,32 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.pfe.ecredit.domain.Garantie;
-import com.pfe.ecredit.repositories.GarantieRepository;
+import com.pfe.ecredit.domain.DemandeGarantie;
+import com.pfe.ecredit.repositories.DemandeGarantieRepository;
 
 public class GarantieServiceImpl implements GarantieService {
 
 	@Autowired
-	private GarantieRepository repo;
+	private DemandeGarantieRepository repo;
 
 	@Override
-	public List<Garantie> findAllGarantie() {
+	public List<DemandeGarantie> findAllGarantie() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 
 	@Override
-	public Garantie findGarantie(Integer id) {
+	public DemandeGarantie findGarantie(Integer id) {
 		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
 	}
 
 	@Override
-	public void saveGarantie(Garantie garantie) {
+	public void saveGarantie(DemandeGarantie garantie) {
 		repo.save(garantie);
 		
 	}
 
 	@Override
-	public void UpdateGarantie(Garantie garantie) {
+	public void UpdateGarantie(DemandeGarantie garantie) {
 		repo.save(garantie);
 		
 	}

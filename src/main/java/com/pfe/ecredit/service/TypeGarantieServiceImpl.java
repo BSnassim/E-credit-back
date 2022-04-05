@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pfe.ecredit.domain.TypeGarantie;
-import com.pfe.ecredit.repositories.TypeGarantieRepository;
+import com.pfe.ecredit.domain.SiTypeGarantie;
+import com.pfe.ecredit.repositories.SiTypeGarantieRepository;
 
 @Service
 public class TypeGarantieServiceImpl implements TypeGarantieService {
 
 	@Autowired
-	private TypeGarantieRepository repo;
+	private SiTypeGarantieRepository repo;
 
 //	@Autowired
 //	private ModelMapper modelMapper;
@@ -28,7 +28,7 @@ public class TypeGarantieServiceImpl implements TypeGarantieService {
 //	}
 	
 	@Override
-	public List<TypeGarantie> findAllTypeGarantie() {
+	public List<SiTypeGarantie> findAllTypeGarantie() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 

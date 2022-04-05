@@ -3,11 +3,8 @@ package com.pfe.ecredit.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pfe.ecredit.domain.NatureGarantie;
-
-
+import com.pfe.ecredit.domain.DemandePieceJointe;
 
 @Repository
-public interface NatureGarantieRepository extends JpaRepository<NatureGarantie, String>{
-
+public interface DemandePieceJointeRepository extends JpaRepository<DemandePieceJointe, Integer>{
 }

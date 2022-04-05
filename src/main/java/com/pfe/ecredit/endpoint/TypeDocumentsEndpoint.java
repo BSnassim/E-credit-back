@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.TypeDocuments;
+import com.pfe.ecredit.domain.SiTypeDocuments;
 import com.pfe.ecredit.service.TypeDocumentsService;
 
 @RequestMapping("/credit")
 @RestController
 @CrossOrigin
 public class TypeDocumentsEndpoint {
-	
-	@Autowired(required=false)
+
+	@Autowired
 	private TypeDocumentsService typeDocumentsService;
-	
-	@GetMapping("/piecesJointes")
-	public List<TypeDocuments> findAllDocuments(){
+
+	@GetMapping("/documents")
+	public List<SiTypeDocuments> findAllDocuments() {
 		return typeDocumentsService.findAllDocuments();
 	}
-	
-	@GetMapping("/piecesJointes/{id}")
-	public TypeDocuments findDocument(@PathVariable Integer id) {
+
+	@GetMapping("/documents/{id}")
+	public SiTypeDocuments findDocument(@PathVariable Integer id) {
 		return typeDocumentsService.findDocument(id);
 	}
 

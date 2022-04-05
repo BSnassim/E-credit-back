@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pfe.ecredit.domain.TypeCredit;
-import com.pfe.ecredit.repositories.TypeCreditRepository;
+import com.pfe.ecredit.domain.SiTypeCredit;
+import com.pfe.ecredit.repositories.SiTypeCreditRepository;
 
 @Service
 public class TypeCreditServiceImpl implements TypeCreditService {
 
 	@Autowired
-	private TypeCreditRepository repo;
+	private SiTypeCreditRepository repo;
 
 //	@Autowired
 //	private ModelMapper modelMapper;
@@ -28,7 +28,7 @@ public class TypeCreditServiceImpl implements TypeCreditService {
 //	}
 	
 	@Override
-	public List<TypeCredit> findAllTypeCredit() {
+	public List<SiTypeCredit> findAllTypeCredit() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 

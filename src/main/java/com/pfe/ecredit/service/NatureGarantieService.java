@@ -2,13 +2,13 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
-import com.pfe.ecredit.domain.NatureGarantie;
+import com.pfe.ecredit.domain.SiNatureGarantie;
 
 
 
 public interface NatureGarantieService {
 
-	List<NatureGarantie> findAllNatureGarantie();
+	List<SiNatureGarantie> findAllNatureGarantie();
 
 	
 }
