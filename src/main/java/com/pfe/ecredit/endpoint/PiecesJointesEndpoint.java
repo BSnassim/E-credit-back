@@ -17,8 +17,8 @@ import com.pfe.ecredit.domain.PiecesJointes;
 import com.pfe.ecredit.service.PiecesJointesService;
 
 @RequestMapping("/credit")
-@CrossOrigin
 @RestController
+@CrossOrigin
 public class PiecesJointesEndpoint {
 	
 	@Autowired(required=false)
