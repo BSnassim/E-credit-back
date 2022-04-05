@@ -28,6 +28,7 @@ public class Demande {
 	private String prenom;
 	private Date dateNaissance;
 	private String sitFamiliale;
+	private String typePiece;
 	private Integer numCin;
 	private Integer numCompte;
 	private Date dateCompte;
@@ -43,4 +44,9 @@ public class Demande {
 	@ManyToOne
 	@JoinColumn(name="phase_id", referencedColumnName = "id")
 	private Phase phase;
+	
+	@ManyToOne
+	@JoinColumn(name="type_credit_id", referencedColumnName = "id")
+	private TypeCredit typeCredit;
+	
 }
