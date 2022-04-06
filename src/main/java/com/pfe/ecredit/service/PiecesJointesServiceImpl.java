@@ -6,37 +6,35 @@ package com.pfe.ecredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.pfe.ecredit.domain.PiecesJointes;
-import com.pfe.ecredit.repositories.PiecesJointesRepository;
+import com.pfe.ecredit.domain.DemandePieceJointe;
+import com.pfe.ecredit.repositories.DemandePieceJointeRepository;
 
-/**
- * @author Nassim.BenSalah
- *
- */
+@Service
 public class PiecesJointesServiceImpl implements PiecesJointesService {
 
 	@Autowired
-	private PiecesJointesRepository repo;
+	private DemandePieceJointeRepository repo;
 
 	@Override
-	public List<PiecesJointes> findAllPiecesJointes() {
+	public List<DemandePieceJointe> findAllPiecesJointes() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 
 	@Override
-	public PiecesJointes findPiecesJointes(Integer id) {
+	public DemandePieceJointe findPiecesJointes(Integer id) {
 		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
 	}
 
 	@Override
-	public void savePiecesJointes(PiecesJointes PJ) {
+	public void savePiecesJointes(DemandePieceJointe PJ) {
 		repo.save(PJ);
 		
 	}
 
 	@Override
-	public void UpdatePiecesJointes(PiecesJointes PJ) {
+	public void UpdatePiecesJointes(DemandePieceJointe PJ) {
 		repo.save(PJ);
 		
 	}

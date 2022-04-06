@@ -3,11 +3,12 @@ package com.pfe.ecredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.Phase;
 import com.pfe.ecredit.domain.Phase;
 import com.pfe.ecredit.repositories.PhaseRepository;
-
+@Service
 public class PhaseServiceImpl implements PhaseService {
 
 	@Autowired

@@ -13,34 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.PiecesJointes;
+import com.pfe.ecredit.domain.DemandePieceJointe;
 import com.pfe.ecredit.service.PiecesJointesService;
 
 @RequestMapping("/credit")
-@CrossOrigin
 @RestController
-public class PiecesJointesEndpoint {
+@CrossOrigin
+public class DemandePieceJointeEndpoint {
 	
 	@Autowired(required=false)
 	private PiecesJointesService PiecesJointesService;
 	
 	@GetMapping("/piecesJointes")
-	public List<PiecesJointes> findAllPiecesJointes(){
+	public List<DemandePieceJointe> findAllPiecesJointes(){
 		return PiecesJointesService.findAllPiecesJointes();
 	}
 	
 	@GetMapping("/piecesJointes/{id}")
-	public PiecesJointes findPiecesJointes(@PathVariable Integer id) {
+	public DemandePieceJointe findPiecesJointes(@PathVariable Integer id) {
 		return PiecesJointesService.findPiecesJointes(id);
 	}
 	
 	@PostMapping("/piecesJointes")
-	public void savePiecesJointes(@RequestBody PiecesJointes PiecesJointes) {
+	public void savePiecesJointes(@RequestBody DemandePieceJointe PiecesJointes) {
 		PiecesJointesService.savePiecesJointes(PiecesJointes);
 	}
 	
 	@PutMapping("/piecesJointes")
-	public void updatePiecesJointes(@RequestBody PiecesJointes PiecesJointes) {
+	public void updatePiecesJointes(@RequestBody DemandePieceJointe PiecesJointes) {
 		PiecesJointesService.UpdatePiecesJointes(PiecesJointes);
 	}
 	

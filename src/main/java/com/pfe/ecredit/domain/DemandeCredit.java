@@ -1,5 +1,6 @@
 package com.pfe.ecredit.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -18,35 +19,25 @@ import lombok.Data;
 @Data
 @Entity
 @Table
-public class Demande {
+public class DemandeCredit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_DM", allocationSize = 1)
-	private Integer id;
+	private Long idDemande;
 	private String nom;
 	private String prenom;
 	private Date dateNaissance;
 	private String sitFamiliale;
 	private String typePiece;
-	private Integer numCin;
+	private Integer numPiece;
 	private Integer numCompte;
 	private Date dateCompte;
-	
-	@OneToMany
-	@JoinColumn(name="demande_id", referencedColumnName = "id")
-	private List<Garantie> garanties;
-	
-	@OneToMany
-	@JoinColumn(name="demande_id", referencedColumnName = "id")
-	private List<PiecesJointes> piecesJointes;
-	
-	@ManyToOne
-	@JoinColumn(name="phase_id", referencedColumnName = "id")
-	private Phase phase;
-	
-	@ManyToOne
-	@JoinColumn(name="type_credit_id", referencedColumnName = "id")
-	private TypeCredit typeCredit;
-	
+	private Integer nbreEcheance;
+	private BigDecimal montant;
+	private String unite;
+	private Date datePhase;
+	private Integer idPhase;
+	private Integer idTypeCredit;
+
 }

@@ -12,13 +12,15 @@ import lombok.Data;
 @Data
 @Entity
 @Table
-public class PiecesJointes {
+public class DemandeHistorique {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
-	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_PJ", allocationSize = 1)
-	private int id;
-	private String libDoc;
-	private String chemin;
+	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_HIS", allocationSize = 1)
+	private Integer idTrt;
+	private Integer idPhase;
+	private Integer datePhase;
+	private Integer userPhase;
+	private Long idDemande;
 
 }

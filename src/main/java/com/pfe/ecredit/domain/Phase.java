@@ -19,4 +19,5 @@ public class Phase {
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_PH", allocationSize = 1)
 	private Integer id;
 	private String etape;
+	private String enAttenteDe;
 }

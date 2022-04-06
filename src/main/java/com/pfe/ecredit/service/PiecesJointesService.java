@@ -2,14 +2,14 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
-import com.pfe.ecredit.domain.PiecesJointes;
+import com.pfe.ecredit.domain.DemandePieceJointe;
 
 public interface PiecesJointesService {
 	
-	public List<PiecesJointes> findAllPiecesJointes();
-	public PiecesJointes findPiecesJointes(Integer id);
-	public void savePiecesJointes(PiecesJointes PJ);
-	public void UpdatePiecesJointes(PiecesJointes PJ);
+	public List<DemandePieceJointe> findAllPiecesJointes();
+	public DemandePieceJointe findPiecesJointes(Integer id);
+	public void savePiecesJointes(DemandePieceJointe PJ);
+	public void UpdatePiecesJointes(DemandePieceJointe PJ);
 	public void DeletePiecesJointes(Integer id);
 
 }
