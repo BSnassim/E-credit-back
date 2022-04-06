@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.pfe.ecredit.domain.SiTypeDocuments;
 
 @Repository
-public interface SiTypeDocumentsRepository extends JpaRepository<SiTypeDocuments, Integer>{
+public interface SiTypeDocumentsRepository extends JpaRepository<SiTypeDocuments, Long>{
 
 	@Query(value = "select p from SiTypeCredit t, SiDocumentCrdt c, SiTypeDocuments p where t.idType = c.codeCredit and c.codeDocument = p.idDoc and c.codeCredit = :code")
-	List<SiTypeDocuments> findPieceByTypeCredit(@Param("code") Integer type);
+	List<SiTypeDocuments> findPieceByTypeCredit(@Param("code") Long type);
 }

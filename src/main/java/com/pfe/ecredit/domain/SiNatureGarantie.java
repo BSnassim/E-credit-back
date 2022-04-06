@@ -12,7 +12,7 @@ import lombok.Data;
 public class SiNatureGarantie {
 
 	@Id
-	private Integer id;
+	private Integer idNature;
 	private String libelleNature;
 
 }
