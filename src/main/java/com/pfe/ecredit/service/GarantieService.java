@@ -2,13 +2,13 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
-import com.pfe.ecredit.domain.Garantie;
+import com.pfe.ecredit.domain.DemandeGarantie;
 
 public interface GarantieService {
 
-	public List<Garantie> findAllGarantie();
-	public Garantie findGarantie(Integer id);
-	public void saveGarantie(Garantie garantie);
-	public void UpdateGarantie(Garantie garantie);
+	public List<DemandeGarantie> findAllGarantie();
+	public DemandeGarantie findGarantie(Integer id);
+	public void saveGarantie(DemandeGarantie garantie);
+	public void UpdateGarantie(DemandeGarantie garantie);
 	public void DeleteGarantie(Integer id);
 }

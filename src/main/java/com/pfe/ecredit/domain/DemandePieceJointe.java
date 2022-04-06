@@ -12,12 +12,14 @@ import lombok.Data;
 @Data
 @Entity
 @Table
-public class NatureGarantie {
+public class DemandePieceJointe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
-	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_NG", allocationSize = 1)
+	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_PJ", allocationSize = 1)
 	private Integer id;
-	private String libelleNature;
+	private String libDoc;
+	private String chemin;
+	private Long idDemande;
 
 }

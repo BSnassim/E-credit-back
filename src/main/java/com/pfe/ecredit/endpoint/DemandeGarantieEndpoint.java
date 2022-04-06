@@ -13,36 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.ecredit.domain.Garantie;
+import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.service.GarantieService;
 
 @RequestMapping("/credit")
 @CrossOrigin
 @RestController
-public class GarantieEndpoint {
+public class DemandeGarantieEndpoint {
 	
 	@Autowired(required=false)
 	private GarantieService GarantieService;
 	
 	@GetMapping("/garantie")
-	public List<Garantie> findAllGarantie(){
+	public List<DemandeGarantie> findAllGarantie(){
 		return GarantieService.findAllGarantie();
 	}
 	
 	@GetMapping("/garantie/{id}")
-	public Garantie findGarantie(@PathVariable Integer id) {
+	public DemandeGarantie findGarantie(@PathVariable Integer id) {
 		return GarantieService.findGarantie(id);
 	}
 	
 	@PostMapping("/garantie")
-	public void saveGarantie(@RequestBody Garantie Garantie) {
+	public void saveGarantie(@RequestBody DemandeGarantie Garantie) {
 		GarantieService.saveGarantie(Garantie);
 	}
 	
-	@PutMapping("/garantie")
-	public void updateGarantie(@RequestBody Garantie Garantie) {
-		GarantieService.UpdateGarantie(Garantie);
-	}
+//	@PutMapping("/garantie")
+//	public void updateGarantie(@RequestBody DemandeGarantie Garantie) {
+//		GarantieService.UpdateGarantie(Garantie);
+//	}
 	
 	@DeleteMapping("/garantie/{id}")
 	public void deleteGarantie(@PathVariable Integer id) {
