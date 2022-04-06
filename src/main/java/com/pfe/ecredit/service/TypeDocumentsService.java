@@ -7,6 +7,7 @@ import com.pfe.ecredit.domain.SiTypeDocuments;
 public interface TypeDocumentsService {
 	
 	public List<SiTypeDocuments> findAllDocuments();
-	public SiTypeDocuments findDocument(Integer id);
+	public SiTypeDocuments findDocument(Long id);
+	public List<SiTypeDocuments> findDocumentsByCredit(Long id);
 
 }

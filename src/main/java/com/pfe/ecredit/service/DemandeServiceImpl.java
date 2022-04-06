@@ -2,42 +2,70 @@ package com.pfe.ecredit.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.DemandeCredit;
+import com.pfe.ecredit.domain.DemandeGarantie;
+import com.pfe.ecredit.domain.DemandePieceJointe;
 import com.pfe.ecredit.repositories.DemandeCreditRepository;
+import com.pfe.ecredit.repositories.DemandeGarantieRepository;
+import com.pfe.ecredit.repositories.DemandeHistoriqueRepository;
+import com.pfe.ecredit.repositories.DemandePieceJointeRepository;
+
 @Service
 public class DemandeServiceImpl implements DemandeService {
 
 	@Autowired
-	private DemandeCreditRepository repo;
+	private DemandeCreditRepository demandeCreditRepository;
+
+	@Autowired
+	private DemandeGarantieRepository demandeGarantieRepository;
+	@Autowired
+	private DemandePieceJointeRepository demandePieceJointeRepository;
+
+	@Autowired
+	private DemandeHistoriqueRepository demandeHistoriqueRepository;
 
 	@Override
 	public List<DemandeCredit> findAllDemande() {
-		return (repo.findAll() != null) ? repo.findAll() : null;
+		return (demandeCreditRepository.findAll() != null) ? demandeCreditRepository.findAll() : null;
 	}
 
 	@Override
 	public DemandeCredit findDemande(Integer id) {
-		return (repo.findById(id).isPresent()) ? repo.findById(id).get() : null;
-	}
-
-	@Override
-	public void saveDemande(DemandeCredit dem) {
-		repo.save(dem);
-
+		return (demandeCreditRepository.findById(id).isPresent()) ? demandeCreditRepository.findById(id).get() : null;
 	}
 
 	@Override
 	public void UpdateDemande(DemandeCredit dem) {
-		repo.save(dem);
+		demandeCreditRepository.save(dem);
 
 	}
 
 	@Override
 	public void DeleteDemande(Integer id) {
-		repo.deleteById(id);
+		demandeCreditRepository.deleteById(id);
+
+	}
+
+	@Override
+	@Transactional
+	public void saveDemande(DemandeCredit demande) {
+		try {
+			// save into demandeCredit
+
+			// save into demandeGarantie
+
+			// save into demandePieceJinte
+
+			// Historique
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 

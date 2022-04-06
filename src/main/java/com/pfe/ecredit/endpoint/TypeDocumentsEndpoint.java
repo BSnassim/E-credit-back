@@ -26,8 +26,8 @@ public class TypeDocumentsEndpoint {
 	}
 
 	@GetMapping("/documents/{id}")
-	public SiTypeDocuments findDocument(@PathVariable Integer id) {
-		return typeDocumentsService.findDocument(id);
+	public List<SiTypeDocuments> findDocument(@PathVariable Long id) {
+		return typeDocumentsService.findDocumentsByCredit(id);
 	}
 
 }
