@@ -87,6 +87,7 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdPhase(1);
 			historique.setDatePhase(LocalDate.now());
 			historique.setIdDemande(demande.getIdDemande());
+			historique.setUserPhase(demande.getUserId());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			// TODO: handle exception
