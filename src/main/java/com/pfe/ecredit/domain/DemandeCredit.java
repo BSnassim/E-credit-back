@@ -1,5 +1,6 @@
 package com.pfe.ecredit.domain;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
@@ -42,5 +43,8 @@ public class DemandeCredit {
 	private List<DemandeGarantie> garantie;
 
 	@Transient
-	private List<DemandePieceJointe> piece;
+	private List<File> pieces;
+	
+	@Transient
+	private Integer userId;
 }
