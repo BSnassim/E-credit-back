@@ -12,7 +12,7 @@ import lombok.Data;
 public class SiTypeDocuments {
 	
 	@Id
-	private Integer idDoc;
+	private Long idDoc;
 	private String libDoc;
 	
 	
