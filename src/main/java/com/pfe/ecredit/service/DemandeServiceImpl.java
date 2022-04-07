@@ -43,7 +43,7 @@ public class DemandeServiceImpl implements DemandeService {
 	@Override
 	public Boolean demandeExists(Integer num) {
 		return (demandeCreditRepository.findByNumPiece(num).isPresent() && 
-				(demandeCreditRepository.findByNumPiece(num).get().getIdPhase() == 2 ||demandeCreditRepository.findByNumPiece(num).get().getIdPhase() == 3));
+				(demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 2 && demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
 	}
 
 	@Override
@@ -72,7 +72,9 @@ public class DemandeServiceImpl implements DemandeService {
 			if(!(demande.getGarantie().isEmpty())) {
 				for(DemandeGarantie i : demande.getGarantie()) {
 					i.setIdDemande(demande.getIdDemande());
-					
+					i.setIdNatureGarantie(i.getNature().getIdNature());
+					i.setIdTypeGrt(i.getType().getId());
+					 
 				}
 				demandeGarantieRepository.saveAll(demande.getGarantie());
 			}
