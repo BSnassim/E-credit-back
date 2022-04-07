@@ -36,6 +36,7 @@ public class DemandeCreditEndpoint {
 	
 	@PostMapping("/demande")
 	public void saveDemande(@RequestBody DemandeCredit Demande) {
+		System.out.println(Demande);
 		DemandeService.saveDemande(Demande);
 	}
 	
