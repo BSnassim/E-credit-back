@@ -1,6 +1,7 @@
 package com.pfe.ecredit.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.DemandeCredit;
+import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.domain.DemandeHistorique;
 import com.pfe.ecredit.repositories.DemandeCreditRepository;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
@@ -38,6 +40,12 @@ public class DemandeServiceImpl implements DemandeService {
 	public DemandeCredit findDemande(Integer id) {
 		return (demandeCreditRepository.findById(id).isPresent()) ? demandeCreditRepository.findById(id).get() : null;
 	}
+	
+	@Override
+	public Boolean demandeExists(Integer num) {
+		return (demandeCreditRepository.findByNumPiece(num).isPresent() && 
+				(demandeCreditRepository.findByNumPiece(num).get().getIdPhase() == 2 ||demandeCreditRepository.findByNumPiece(num).get().getIdPhase() == 3));
+	}
 
 	@Override
 	public void UpdateDemande(DemandeCredit dem) {
@@ -61,6 +69,14 @@ public class DemandeServiceImpl implements DemandeService {
 			demandeCreditRepository.save(demande);
 
 			// save into demandeGarantie
+			
+			if(!(demande.getGarantie().isEmpty())) {
+				for(DemandeGarantie i : demande.getGarantie()) {
+					i.setIdDemande(demande.getIdDemande());
+					
+				}
+				demandeGarantieRepository.saveAll(demande.getGarantie());
+			}
 
 			// save into demandePieceJinte
 

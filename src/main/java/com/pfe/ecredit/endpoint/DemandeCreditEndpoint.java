@@ -34,6 +34,11 @@ public class DemandeCreditEndpoint {
 		return DemandeService.findDemande(id);
 	}
 	
+	@GetMapping("/demande/{numPiece}")
+	public Boolean demandeExists(@PathVariable Integer numPiece) {
+		return DemandeService.demandeExists(numPiece);
+	}
+	
 	@PostMapping("/demande")
 	public void saveDemande(@RequestBody DemandeCredit Demande) {
 		System.out.println(Demande);
