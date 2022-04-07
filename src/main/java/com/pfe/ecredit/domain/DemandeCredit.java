@@ -1,6 +1,7 @@
 package com.pfe.ecredit.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class DemandeCredit {
 	private Integer nbreEcheance;
 	private BigDecimal montant;
 	private String unite;
-	private Date datePhase;
+	private LocalDate datePhase;
 	private Integer idPhase;
 	private Integer idTypeCredit;
 	@Transient
