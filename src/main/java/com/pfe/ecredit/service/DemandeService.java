@@ -3,8 +3,6 @@ package com.pfe.ecredit.service;
 import java.util.List;
 
 import com.pfe.ecredit.domain.DemandeCredit;
-import com.pfe.ecredit.domain.DemandeGarantie;
-import com.pfe.ecredit.domain.DemandePieceJointe;
 
 public interface DemandeService {
 
