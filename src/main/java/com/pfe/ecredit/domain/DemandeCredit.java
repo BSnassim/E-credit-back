@@ -44,7 +44,7 @@ public class DemandeCredit {
 	private List<DemandeGarantie> garantie;
 
 	@Transient
-	private MultipartFile[] pieces;
+	private List<DemandePieceJointe> pieces;
 	
 	@Transient
 	private Integer userId;
