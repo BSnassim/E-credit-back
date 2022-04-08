@@ -1,6 +1,5 @@
 package com.pfe.ecredit.domain;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -43,7 +44,7 @@ public class DemandeCredit {
 	private List<DemandeGarantie> garantie;
 
 	@Transient
-	private List<File> pieces;
+	private MultipartFile[] pieces;
 	
 	@Transient
 	private Integer userId;

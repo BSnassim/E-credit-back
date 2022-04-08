@@ -1,6 +1,14 @@
 package com.pfe.ecredit.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+>>>>>>> origin/master
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,6 +19,7 @@ import org.springframework.stereotype.Service;
 import com.pfe.ecredit.domain.DemandeCredit;
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.domain.DemandeHistorique;
+import com.pfe.ecredit.domain.DemandePieceJointe;
 import com.pfe.ecredit.repositories.DemandeCreditRepository;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
 import com.pfe.ecredit.repositories.DemandeHistoriqueRepository;
@@ -79,7 +88,26 @@ public class DemandeServiceImpl implements DemandeService {
 				demandeGarantieRepository.saveAll(demande.getGarantie());
 			}
 
-			// save into demandePieceJinte
+			// save into demandePieceJointe
+			File directory = new File("C:\\uploadedFiles");
+	        if (! directory.exists()){
+	            directory.mkdir();
+	        }
+	        Arrays.asList(demande.getPieces()).stream().forEach(file -> {
+                byte[] bytes = new byte[0];
+                try {
+                    bytes = file.getBytes();
+                    Files.write(Paths.get("C:\\uploadedFiles" + file.getOriginalFilename()), bytes);
+                    DemandePieceJointe PJ = new DemandePieceJointe();
+                    PJ.setChemin("C:\\uploadedFiles"+ file.getOriginalFilename());
+                    PJ.setIdDemande(demande.getIdDemande());
+                    PJ.setLibDoc(file.getOriginalFilename());
+                    demandePieceJointeRepository.save(PJ);
+                    
+                } catch (IOException e) {
+
+                }
+	        });
 
 			// Historique
 			DemandeHistorique historique = new DemandeHistorique();
