@@ -86,26 +86,11 @@ public class DemandeServiceImpl implements DemandeService {
 			}
 
 			// save into demandePieceJointe
-			File directory = new File("C:\\uploadedFiles");
-	        if (! directory.exists()){
-	            directory.mkdir();
-	        }
-	        Arrays.asList(demande.getPieces()).stream().forEach(file -> {
-                byte[] bytes = new byte[0];
-                try {
-                    bytes = file.getBytes();
-                    Files.write(Paths.get("C:\\uploadedFiles" + file.getOriginalFilename()), bytes);
-                    DemandePieceJointe PJ = new DemandePieceJointe();
-                    PJ.setChemin("C:\\uploadedFiles"+ file.getOriginalFilename());
-                    PJ.setIdDemande(demande.getIdDemande());
-                    PJ.setLibDoc(file.getOriginalFilename());
-                    demandePieceJointeRepository.save(PJ);
-                    
-                } catch (IOException e) {
-
-                }
-	        });
-
+			for(DemandePieceJointe i : demande.getPieces()) {
+                    i.setChemin("C:\\uploadedFiles"+ i.getLibDoc());
+                    i.setIdDemande(demande.getIdDemande());
+			}
+			demandePieceJointeRepository.saveAll(demande.getPieces());
 			// Historique
 			DemandeHistorique historique = new DemandeHistorique();
 			historique.setIdPhase(1);
