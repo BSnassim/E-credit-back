@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 import java.util.Arrays;
->>>>>>> origin/master
+//>>>>>>> origin/master
 import java.util.List;
 
 import javax.transaction.Transactional;
