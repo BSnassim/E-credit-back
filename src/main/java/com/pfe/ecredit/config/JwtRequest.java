@@ -1,4 +1,4 @@
-package com.pfe.ecredit.domain;
+package com.pfe.ecredit.config;
 
 import java.io.Serializable;
 

@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.ecredit.config.JwtRequest;
+import com.pfe.ecredit.config.JwtResponse;
 import com.pfe.ecredit.config.JwtTokenUtil;
 import com.pfe.ecredit.config.PasswordEncoderCreation;
-import com.pfe.ecredit.domain.JwtRequest;
-import com.pfe.ecredit.domain.JwtResponse;
 import com.pfe.ecredit.domain.Utilisateur;
 import com.pfe.ecredit.service.JwtUserDetailsService;
 import com.pfe.ecredit.service.UtilisateurService;
