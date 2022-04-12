@@ -17,7 +17,7 @@ import com.pfe.ecredit.service.TypeCreditService;
 @CrossOrigin
 public class TypeCreditEndpoint {
 
-	@Autowired(required=false)
+	@Autowired
 	private TypeCreditService typeCreditService;
 
 	@GetMapping("/typeCredit")

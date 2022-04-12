@@ -20,7 +20,7 @@ import com.pfe.ecredit.service.GarantieService;
 @RestController
 public class DemandeGarantieEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private GarantieService GarantieService;
 	
 	@GetMapping("/garantie")

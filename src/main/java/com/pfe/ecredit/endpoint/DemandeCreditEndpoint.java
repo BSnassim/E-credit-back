@@ -34,7 +34,7 @@ public class DemandeCreditEndpoint {
 		return DemandeService.findDemande(id);
 	}
 	
-	@GetMapping("/demande/{numPiece}")
+	@GetMapping("/demande/Exists/{numPiece}")
 	public Boolean demandeExists(@PathVariable Integer numPiece) {
 		return DemandeService.demandeExists(numPiece);
 	}

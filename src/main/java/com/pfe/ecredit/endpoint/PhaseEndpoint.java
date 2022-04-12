@@ -21,7 +21,7 @@ import com.pfe.ecredit.service.PhaseService;
 @RestController
 public class PhaseEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private PhaseService PhaseService;
 	
 	@GetMapping("/phase")

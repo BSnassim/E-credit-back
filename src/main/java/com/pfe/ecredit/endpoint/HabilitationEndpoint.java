@@ -21,7 +21,7 @@ import com.pfe.ecredit.service.HabilitationService;
 @RestController
 public class HabilitationEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private HabilitationService habService;
 	
 	@GetMapping("/habilitations")

@@ -21,7 +21,7 @@ import com.pfe.ecredit.service.ProfilService;
 @RestController
 public class ProfilEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private ProfilService profilService;
 	
 	@GetMapping("/profils")

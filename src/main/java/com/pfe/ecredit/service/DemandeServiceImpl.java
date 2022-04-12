@@ -2,13 +2,7 @@ package com.pfe.ecredit.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
-//<<<<<<< HEAD
-//=======
-import java.util.Arrays;
 //>>>>>>> origin/master
 import java.util.List;
 
@@ -99,7 +93,6 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdPhase(1);
 			historique.setDatePhase(LocalDate.now());
 			historique.setIdDemande(demande.getIdDemande());
-			historique.setUserPhase(demande.getUserId());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			throw e;

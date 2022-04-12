@@ -16,7 +16,7 @@ import com.pfe.ecredit.service.NatureGarantieService;
 @CrossOrigin
 public class NatureGarantieEndpoint {
 
-	@Autowired(required=false)
+	@Autowired
 	private NatureGarantieService natureGarantieService;
 
 	@GetMapping("/natureGarantie")
