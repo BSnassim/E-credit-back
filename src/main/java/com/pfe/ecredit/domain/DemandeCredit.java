@@ -13,8 +13,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 @Data
@@ -40,12 +38,10 @@ public class DemandeCredit {
 	private LocalDate datePhase;
 	private Integer idPhase;
 	private Integer idTypeCredit;
+	private Integer userId;
 	@Transient
 	private List<DemandeGarantie> garantie;
 
 	@Transient
 	private List<DemandePieceJointe> pieces;
-	
-	@Transient
-	private Integer userId;
 }

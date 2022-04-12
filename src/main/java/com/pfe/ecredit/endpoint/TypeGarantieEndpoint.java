@@ -16,7 +16,7 @@ import com.pfe.ecredit.service.TypeGarantieService;
 @CrossOrigin
 public class TypeGarantieEndpoint {
 
-	@Autowired(required=false)
+	@Autowired
 	TypeGarantieService typeGarantieService;
 
 	@GetMapping("/typeGarantie")

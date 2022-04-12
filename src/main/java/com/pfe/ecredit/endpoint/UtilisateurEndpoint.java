@@ -21,7 +21,7 @@ import com.pfe.ecredit.service.UtilisateurService;
 @RestController
 public class UtilisateurEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private UtilisateurService userService;
 	
 	@GetMapping("/users")

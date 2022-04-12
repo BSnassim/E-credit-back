@@ -23,7 +23,7 @@ import com.pfe.ecredit.service.PiecesJointesService;
 @CrossOrigin
 public class DemandePieceJointeEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private PiecesJointesService PiecesJointesService;
 	
 	@GetMapping("/piecesJointes")

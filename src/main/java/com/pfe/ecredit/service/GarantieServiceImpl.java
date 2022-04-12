@@ -3,10 +3,12 @@ package com.pfe.ecredit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
 
+@Service
 public class GarantieServiceImpl implements GarantieService {
 
 	@Autowired
