@@ -31,5 +31,9 @@ public class TypeCreditServiceImpl implements TypeCreditService {
 	public List<SiTypeCredit> findAllTypeCredit() {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
+	
+	public SiTypeCredit findTypeCredit(Integer id) {
+		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
+	}
 
 }
