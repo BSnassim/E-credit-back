@@ -21,7 +21,7 @@ import com.pfe.ecredit.service.DemandeService;
 @RestController
 public class DemandeCreditEndpoint {
 	
-	@Autowired(required=false)
+	@Autowired
 	private DemandeService DemandeService;
 	
 	@GetMapping("/demande")
@@ -40,7 +40,7 @@ public class DemandeCreditEndpoint {
 	}
 	
 	@PostMapping("/demande")
-	public void saveDemande(@RequestBody DemandeCredit Demande) {
+	public void saveDemande(@RequestBody DemandeCredit Demande) throws Exception {
 		System.out.println(Demande);
 		DemandeService.saveDemande(Demande);
 	}

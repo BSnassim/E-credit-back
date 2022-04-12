@@ -9,10 +9,10 @@ public interface DemandeService {
 	public List<DemandeCredit> findAllDemande();
 
 	public DemandeCredit findDemande(Integer id);
-	
+
 	public Boolean demandeExists(Integer num);
 
-	public void saveDemande(DemandeCredit demande);
+	public void saveDemande(DemandeCredit demande) throws Exception;
 
 	public void UpdateDemande(DemandeCredit dem);
 
