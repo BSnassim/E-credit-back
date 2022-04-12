@@ -1,8 +1,10 @@
-package com.pfe.ecredit.domain;
+package com.pfe.ecredit.config;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+
+import com.pfe.ecredit.domain.Habilitation;
 
 import lombok.Data;
 
