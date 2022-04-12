@@ -7,6 +7,6 @@ import com.pfe.ecredit.domain.SiTypeCredit;
 
 
 @Repository
-public interface SiTypeCreditRepository extends JpaRepository<SiTypeCredit, String>{
+public interface SiTypeCreditRepository extends JpaRepository<SiTypeCredit, Integer>{
 
 }
