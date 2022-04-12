@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -18,8 +19,10 @@ public class DemandePieceJointe {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_PJ", allocationSize = 1)
 	private Integer id;
-	private String libDoc;
+	private String fileName;
 	private String chemin;
 	private Long idDemande;
+	@Transient
+	public byte[] fileContent;
 
 }

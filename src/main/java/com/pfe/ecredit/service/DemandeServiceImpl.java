@@ -1,11 +1,15 @@
 package com.pfe.ecredit.service;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+//<<<<<<< HEAD
+//=======
 import java.util.Arrays;
+//>>>>>>> origin/master
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -45,11 +49,12 @@ public class DemandeServiceImpl implements DemandeService {
 	public DemandeCredit findDemande(Integer id) {
 		return (demandeCreditRepository.findById(id).isPresent()) ? demandeCreditRepository.findById(id).get() : null;
 	}
-	
+
 	@Override
 	public Boolean demandeExists(Integer num) {
-		return (demandeCreditRepository.findByNumPiece(num).isPresent() && 
-				(demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 2 && demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
+		return (demandeCreditRepository.findByNumPiece(num).isPresent()
+				&& (demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 2
+						&& demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
 	}
 
 	@Override
@@ -66,7 +71,7 @@ public class DemandeServiceImpl implements DemandeService {
 
 	@Override
 	@Transactional
-	public void saveDemande(DemandeCredit demande) {
+	public void saveDemande(DemandeCredit demande) throws Exception {
 		try {
 			// save into demandeCredit
 			demande.setIdPhase(1);
@@ -74,23 +79,21 @@ public class DemandeServiceImpl implements DemandeService {
 			demandeCreditRepository.save(demande);
 
 			// save into demandeGarantie
-			
-			if(!(demande.getGarantie().isEmpty())) {
-				for(DemandeGarantie i : demande.getGarantie()) {
+
+			if (!(demande.getGarantie().isEmpty())) {
+				for (DemandeGarantie i : demande.getGarantie()) {
 					i.setIdDemande(demande.getIdDemande());
 					i.setIdNatureGarantie(i.getNature().getIdNature());
 					i.setIdTypeGrt(i.getType().getId());
-					 
+
 				}
 				demandeGarantieRepository.saveAll(demande.getGarantie());
 			}
 
 			// save into demandePieceJointe
-			for(DemandePieceJointe i : demande.getPieces()) {
-                    i.setChemin("C:\\uploadedFiles"+ i.getLibDoc());
-                    i.setIdDemande(demande.getIdDemande());
-			}
-			demandePieceJointeRepository.saveAll(demande.getPieces());
+
+			uploadDocumentDemande(demande.getPieces(), demande);
+
 			// Historique
 			DemandeHistorique historique = new DemandeHistorique();
 			historique.setIdPhase(1);
@@ -99,9 +102,39 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setUserPhase(demande.getUserId());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw e;
 		}
 
+	}
+
+	@Transactional
+	private void uploadDocumentDemande(List<DemandePieceJointe> listPieceJointe, DemandeCredit demande)
+			throws Exception {
+
+		try {
+			String pathPj = "C:\\uploadedFiles\\";
+			File dir1 = new File(pathPj + "\\" + demande.getIdDemande());
+			dir1.mkdirs();
+
+			for (int i = 0; i < listPieceJointe.size(); i++) {
+				if (listPieceJointe.get(i).getFileContent() != null) {
+					listPieceJointe.get(i).setChemin(pathPj + listPieceJointe.get(i).getFileName());
+					listPieceJointe.get(i).setIdDemande(demande.getIdDemande());
+
+					// save info doc in bade
+					demandePieceJointeRepository.save(listPieceJointe.get(i));
+
+					// save doc sue repertoire
+					FileOutputStream outputStream1 = new FileOutputStream(
+							dir1 + "\\" + listPieceJointe.get(i).getFileName());
+					outputStream1.write(listPieceJointe.get(i).getFileContent());
+					outputStream1.flush();
+					outputStream1.close();
+				}
+			}
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }
