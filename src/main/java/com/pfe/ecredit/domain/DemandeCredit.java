@@ -29,7 +29,7 @@ public class DemandeCredit {
 	private Date dateNaissance;
 	private String sitFamiliale;
 	private String typePiece;
-	private Integer numPiece;
+	private String numPiece;
 	private Integer numCompte;
 	private Date dateCompte;
 	private Integer nbreEcheance;
