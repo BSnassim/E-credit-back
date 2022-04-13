@@ -35,7 +35,7 @@ public class DemandeCreditEndpoint {
 	}
 	
 	@GetMapping("/demande/Exists/{numPiece}")
-	public Boolean demandeExists(@PathVariable Integer numPiece) {
+	public Boolean demandeExists(@PathVariable String numPiece) {
 		return DemandeService.demandeExists(numPiece);
 	}
 	
