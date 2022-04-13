@@ -22,7 +22,6 @@ public class DemandeHistorique {
 	private Integer idTrt;
 	private Integer idPhase;
 	private LocalDate datePhase;
-	private Integer userPhase;
 	private Long idDemande;
 
 }

@@ -38,7 +38,7 @@ public class DemandeCredit {
 	private LocalDate datePhase;
 	private Integer idPhase;
 	private Integer idTypeCredit;
-	private Integer userId;
+	private Integer idUser;
 	@Transient
 	private List<DemandeGarantie> garantie;
 
