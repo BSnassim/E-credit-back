@@ -130,4 +130,9 @@ public class DemandeServiceImpl implements DemandeService {
 		}
 	}
 
+	@Override
+	public List<DemandeCredit> findAllByUser(Integer id) {
+		return (demandeCreditRepository.findAllByIdUser(id) != null) ? demandeCreditRepository.findAllByIdUser(id) : null;
+	}
+
 }

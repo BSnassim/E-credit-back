@@ -9,6 +9,8 @@ public interface DemandeService {
 	public List<DemandeCredit> findAllDemande();
 
 	public DemandeCredit findDemande(Integer id);
+	
+	public List<DemandeCredit> findAllByUser(Integer id);
 
 	public Boolean demandeExists(Integer num);
 
