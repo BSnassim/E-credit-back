@@ -12,7 +12,7 @@ public interface DemandeService {
 	
 	public List<DemandeCredit> findAllByUser(Integer id);
 
-	public Boolean demandeExists(Integer num);
+	public Boolean demandeExists(String num);
 
 	public void saveDemande(DemandeCredit demande) throws Exception;
 

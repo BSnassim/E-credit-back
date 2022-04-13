@@ -10,7 +10,7 @@ import com.pfe.ecredit.domain.DemandeCredit;
 @Repository
 public interface DemandeCreditRepository  extends JpaRepository<DemandeCredit, Integer>{
 
-	public Optional<DemandeCredit> findByNumPiece(Integer num);
+	public Optional<DemandeCredit> findByNumPiece(String num);
 	
 	public List<DemandeCredit> findAllByIdUser(Integer id);
 }

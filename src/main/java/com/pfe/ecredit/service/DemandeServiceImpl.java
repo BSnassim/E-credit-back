@@ -45,7 +45,7 @@ public class DemandeServiceImpl implements DemandeService {
 	}
 
 	@Override
-	public Boolean demandeExists(Integer num) {
+	public Boolean demandeExists(String num) {
 		return (demandeCreditRepository.findByNumPiece(num).isPresent()
 				&& (demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 2
 						&& demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
