@@ -9,6 +9,7 @@ import com.pfe.ecredit.domain.SiNatureGarantie;
 public interface NatureGarantieService {
 
 	List<SiNatureGarantie> findAllNatureGarantie();
+	SiNatureGarantie findNatureGarantie(Integer id);
 
 	
 }

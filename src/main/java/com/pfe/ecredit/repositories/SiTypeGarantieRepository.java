@@ -8,6 +8,6 @@ import com.pfe.ecredit.domain.SiTypeGarantie;
 
 
 @Repository
-public interface SiTypeGarantieRepository extends JpaRepository<SiTypeGarantie, String>{
+public interface SiTypeGarantieRepository extends JpaRepository<SiTypeGarantie, Integer>{
 
 }

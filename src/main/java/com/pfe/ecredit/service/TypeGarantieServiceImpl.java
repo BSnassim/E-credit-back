@@ -32,4 +32,9 @@ public class TypeGarantieServiceImpl implements TypeGarantieService {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 
+	@Override
+	public SiTypeGarantie findTypeGarantie(Integer id) {
+		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
+	}
+
 }
