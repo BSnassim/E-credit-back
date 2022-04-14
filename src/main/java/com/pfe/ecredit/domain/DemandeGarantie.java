@@ -24,7 +24,7 @@ public class DemandeGarantie {
 	private BigDecimal montant;
 	private Integer idNatureGarantie;
 	private Integer idTypeGrt;
-	private Long idDemande;
+	private Integer idDemande;
 	
 	@Transient
 	private SiNatureGarantie nature;

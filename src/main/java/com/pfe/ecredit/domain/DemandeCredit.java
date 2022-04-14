@@ -23,7 +23,7 @@ public class DemandeCredit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_DM", allocationSize = 1)
-	private Long idDemande;
+	private Integer idDemande;
 	private String nom;
 	private String prenom;
 	private Date dateNaissance;
