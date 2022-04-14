@@ -30,7 +30,7 @@ public class DemandeCredit {
 	private String sitFamiliale;
 	private String typePiece;
 	private String numPiece;
-	private Integer numCompte;
+	private String numCompte;
 	private Date dateCompte;
 	private Integer nbreEcheance;
 	private BigDecimal montant;
