@@ -33,6 +33,11 @@ public class DemandeGarantieEndpoint {
 		return GarantieService.findGarantie(id);
 	}
 	
+	@GetMapping("/garantie/ByDemande/{id}")
+	public List<DemandeGarantie> findGarantieByDemande(@PathVariable Integer id) {
+		return GarantieService.findByDemande(id);
+	}
+	
 	@PostMapping("/garantie")
 	public void saveGarantie(@RequestBody DemandeGarantie Garantie) {
 		GarantieService.saveGarantie(Garantie);

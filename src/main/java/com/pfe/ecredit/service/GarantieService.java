@@ -8,6 +8,7 @@ public interface GarantieService {
 
 	public List<DemandeGarantie> findAllGarantie();
 	public DemandeGarantie findGarantie(Integer id);
+	public List<DemandeGarantie> findByDemande(Integer id);
 	public void saveGarantie(DemandeGarantie garantie);
 	public void UpdateGarantie(DemandeGarantie garantie);
 	public void DeleteGarantie(Integer id);

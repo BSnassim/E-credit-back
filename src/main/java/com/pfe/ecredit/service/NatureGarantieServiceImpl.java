@@ -32,4 +32,9 @@ public class NatureGarantieServiceImpl implements NatureGarantieService {
 		return (repo.findAll() != null)? repo.findAll() : null;
 	}
 
+	@Override
+	public SiNatureGarantie findNatureGarantie(Integer id) {
+		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
+	}
+
 }

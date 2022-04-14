@@ -41,4 +41,9 @@ public class GarantieServiceImpl implements GarantieService {
 		repo.deleteById(id);
 		
 	}
+
+	@Override
+	public List<DemandeGarantie> findByDemande(Integer id) {
+		return (repo.findAllByIdDemande(id) != null)? repo.findAllByIdDemande(id) : null;
+	}
 }
