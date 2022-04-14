@@ -21,7 +21,7 @@ public class DemandePieceJointe {
 	private Integer id;
 	private String fileName;
 	private String chemin;
-	private Long idDemande;
+	private Integer idDemande;
 	@Transient
 	public byte[] fileContent;
 
