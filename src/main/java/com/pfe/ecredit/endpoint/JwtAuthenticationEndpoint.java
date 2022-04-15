@@ -62,7 +62,8 @@ public class JwtAuthenticationEndpoint {
 				user.getEmail(), 
 				user.getTel(),  
 				user.getDateNais(),
-				user.getProfil().getHabilitations()
+				user.getProfil().getHabilitations(),
+				user.getAgence()
 				));
 	}
 

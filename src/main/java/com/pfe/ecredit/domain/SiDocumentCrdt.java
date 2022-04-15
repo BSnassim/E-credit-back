@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 public class SiDocumentCrdt {
 
 	@Id
-	private int codeDocument;
+	private Integer codeDocument;
 	@Id
-	private Long codeCredit;
+	private Integer codeCredit;
 
 	@Data
 	@NoArgsConstructor
