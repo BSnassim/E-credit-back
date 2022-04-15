@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.pfe.ecredit.domain.Habilitation;
+import com.pfe.ecredit.domain.SiAgence;
 
 import lombok.Data;
 
@@ -20,5 +21,6 @@ public class JwtResponse implements Serializable {
 	private final Integer tel;
 	private final Date dateNais;
 	private final List<Habilitation> roles;
+	private final SiAgence agence;
 
 	}

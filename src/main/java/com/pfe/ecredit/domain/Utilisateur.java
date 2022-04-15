@@ -32,4 +32,7 @@ public class Utilisateur {
 	@JoinColumn(name="profil_id", referencedColumnName = "id")
 	private Profil profil;
 
+	@ManyToOne
+	@JoinColumn(name="agence_id", referencedColumnName = "idAgence")
+	private SiAgence agence;
 }

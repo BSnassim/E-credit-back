@@ -24,12 +24,12 @@ public class TypeDocumentsServiceImpl implements TypeDocumentsService {
 	}
 
 	@Override
-	public SiTypeDocuments findDocument(Long id) {
+	public SiTypeDocuments findDocument(Integer id) {
 		return (repo.findById(id).isPresent()) ? repo.findById(id).get() : null;
 	}
 
 	@Override
-	public List<SiTypeDocuments> findDocumentsByCredit(Long id) {
+	public List<SiTypeDocuments> findDocumentsByCredit(Integer id) {
 		return repo.findPieceByTypeCredit(id);
 	}
 }
