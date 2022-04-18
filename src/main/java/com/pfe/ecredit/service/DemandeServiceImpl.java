@@ -51,11 +51,6 @@ public class DemandeServiceImpl implements DemandeService {
 						&& demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
 	}
 
-	@Override
-	public void UpdateDemande(DemandeCredit dem) {
-		demandeCreditRepository.save(dem);
-
-	}
 
 	@Override
 	public void DeleteDemande(Integer id) {
@@ -100,6 +95,39 @@ public class DemandeServiceImpl implements DemandeService {
 
 	}
 
+	@Override
+	@Transactional
+	public void UpdateDemande(DemandeCredit demande) throws Exception {
+		try {
+			// save into demandeCredit
+			demandeCreditRepository.save(demande);
+
+			// save into demandeGarantie
+
+			if (!(demande.getGarantie().isEmpty() )) {
+				for (DemandeGarantie i : demande.getGarantie()) {
+					i.setIdNatureGarantie(i.getNature().getIdNature());
+					i.setIdTypeGrt(i.getType().getId());
+
+				}
+				demandeGarantieRepository.saveAll(demande.getGarantie());
+			}
+
+			// save into demandePieceJointe
+			if(!(demande.getPieces().isEmpty() )) {
+			uploadDocumentDemande(demande.getPieces(), demande);
+			}
+			// Historique
+			DemandeHistorique historique = new DemandeHistorique();
+			historique.setIdPhase(demande.getIdPhase());
+			historique.setDatePhase(LocalDate.now());
+			historique.setIdDemande(demande.getIdDemande());
+			demandeHistoriqueRepository.save(historique);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	@Transactional
 	private void uploadDocumentDemande(List<DemandePieceJointe> listPieceJointe, DemandeCredit demande)
 			throws Exception {

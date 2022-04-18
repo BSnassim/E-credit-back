@@ -46,12 +46,11 @@ public class DemandeCreditEndpoint {
 	
 	@PostMapping("/demande")
 	public void saveDemande(@RequestBody DemandeCredit Demande) throws Exception {
-		System.out.println(Demande);
 		DemandeService.saveDemande(Demande);
 	}
 	
 	@PutMapping("/demande")
-	public void updateDemande(@RequestBody DemandeCredit Demande) {
+	public void updateDemande(@RequestBody DemandeCredit Demande) throws Exception {
 		DemandeService.UpdateDemande(Demande);
 	}
 	
