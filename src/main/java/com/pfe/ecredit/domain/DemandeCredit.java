@@ -39,6 +39,7 @@ public class DemandeCredit {
 	private Integer idPhase;
 	private Integer idTypeCredit;
 	private Integer idUser;
+	private String complement;
 	@Transient
 	private List<DemandeGarantie> garantie;
 
