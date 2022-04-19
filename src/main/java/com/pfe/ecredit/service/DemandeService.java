@@ -11,6 +11,8 @@ public interface DemandeService {
 	public DemandeCredit findDemande(Integer id);
 	
 	public List<DemandeCredit> findAllByUser(Integer id);
+	
+	public List<DemandeCredit> findByAgence(Integer id);
 
 	public Boolean demandeExists(String num);
 
