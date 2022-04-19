@@ -44,6 +44,11 @@ public class DemandeCreditEndpoint {
 		return DemandeService.findAllByUser(id);
 	}
 	
+	@GetMapping("/demande/ByAgence/{id}")
+	public List<DemandeCredit> findByAgence(@PathVariable Integer id){
+		return DemandeService.findByAgence(id);
+	}
+	
 	@PostMapping("/demande")
 	public void saveDemande(@RequestBody DemandeCredit Demande) throws Exception {
 		DemandeService.saveDemande(Demande);
