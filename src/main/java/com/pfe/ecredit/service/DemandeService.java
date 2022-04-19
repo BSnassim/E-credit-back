@@ -16,7 +16,7 @@ public interface DemandeService {
 
 	public void saveDemande(DemandeCredit demande) throws Exception;
 
-	public void UpdateDemande(DemandeCredit dem);
+	public void UpdateDemande(DemandeCredit dem) throws Exception;
 
 	public void DeleteDemande(Integer id);
 

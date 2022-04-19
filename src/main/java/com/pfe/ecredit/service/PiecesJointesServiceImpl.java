@@ -43,4 +43,9 @@ public class PiecesJointesServiceImpl implements PiecesJointesService {
 		repo.deleteById(id);
 		
 	}
+
+	@Override
+	public List<DemandePieceJointe> findByDemande(Integer id) {
+		return (repo.findAllByIdDemande(id) != null)? repo.findAllByIdDemande(id) : null;
+	}
 }

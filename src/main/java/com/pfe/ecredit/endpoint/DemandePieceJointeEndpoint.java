@@ -35,6 +35,11 @@ public class DemandePieceJointeEndpoint {
 		return PiecesJointesService.findPiecesJointes(id);
 	}
 	
+	@GetMapping("/piecesJointes/demande/{id}")
+	public List<DemandePieceJointe> findByDemande(@PathVariable Integer id) {
+		return PiecesJointesService.findByDemande(id);
+	}
+	
 	@PostMapping("/piecesJointes")
 	public void savePiecesJointes(@RequestParam DemandePieceJointe PiecesJointes) {
 		PiecesJointesService.savePiecesJointes(PiecesJointes);
