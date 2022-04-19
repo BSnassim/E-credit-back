@@ -21,26 +21,26 @@ import com.pfe.ecredit.service.GarantieService;
 public class DemandeGarantieEndpoint {
 	
 	@Autowired
-	private GarantieService GarantieService;
+	private GarantieService garantieService;
 	
 	@GetMapping("/garantie")
 	public List<DemandeGarantie> findAllGarantie(){
-		return GarantieService.findAllGarantie();
+		return garantieService.findAllGarantie();
 	}
 	
 	@GetMapping("/garantie/{id}")
 	public DemandeGarantie findGarantie(@PathVariable Integer id) {
-		return GarantieService.findGarantie(id);
+		return garantieService.findGarantie(id);
 	}
 	
 	@GetMapping("/garantie/ByDemande/{id}")
 	public List<DemandeGarantie> findGarantieByDemande(@PathVariable Integer id) {
-		return GarantieService.findByDemande(id);
+		return garantieService.findByDemande(id);
 	}
 	
 	@PostMapping("/garantie")
 	public void saveGarantie(@RequestBody DemandeGarantie Garantie) {
-		GarantieService.saveGarantie(Garantie);
+		garantieService.saveGarantie(Garantie);
 	}
 	
 //	@PutMapping("/garantie")
@@ -50,7 +50,7 @@ public class DemandeGarantieEndpoint {
 	
 	@DeleteMapping("/garantie/{id}")
 	public void deleteGarantie(@PathVariable Integer id) {
-		GarantieService.DeleteGarantie(id);
+		garantieService.DeleteGarantie(id);
 	}
 
 
