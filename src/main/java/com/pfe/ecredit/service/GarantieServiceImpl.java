@@ -7,12 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
+import com.pfe.ecredit.repositories.SiNatureGarantieRepository;
+import com.pfe.ecredit.repositories.SiTypeGarantieRepository;
 
 @Service
 public class GarantieServiceImpl implements GarantieService {
 
 	@Autowired
 	private DemandeGarantieRepository repo;
+	@Autowired
+	private TypeGarantieService servT;
+	@Autowired
+	private NatureGarantieService servN;
 
 	@Override
 	public List<DemandeGarantie> findAllGarantie() {
@@ -44,6 +50,11 @@ public class GarantieServiceImpl implements GarantieService {
 
 	@Override
 	public List<DemandeGarantie> findByDemande(Integer id) {
-		return (repo.findAllByIdDemande(id) != null)? repo.findAllByIdDemande(id) : null;
+		List<DemandeGarantie> res =(repo.findAllByIdDemande(id) != null)? repo.findAllByIdDemande(id) : null;
+		for (DemandeGarantie i : res) {
+			i.setNature(servN.findNatureGarantie(i.getIdNatureGarantie()));
+			i.setType(servT.findTypeGarantie(i.getIdTypeGrt()));
+		}
+		return res;
 	}
 }
