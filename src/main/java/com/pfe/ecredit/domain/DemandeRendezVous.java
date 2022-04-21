@@ -21,7 +21,7 @@ public class DemandeRendezVous {
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_rdv", allocationSize = 1)
 	private Integer idRdv;
 	private String title;
-	private Date DateRdv;
+	private Date dateRdv;
 	private Long IdDemande;
 
 }

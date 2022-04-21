@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.pfe.ecredit.service;
 
 import java.util.List;
