@@ -83,11 +83,12 @@ public class DemandeServiceImpl implements DemandeService {
 
 			uploadDocumentDemande(demande.getPieces(), demande);
 
-			// Historique
+			// save into Historique
 			DemandeHistorique historique = new DemandeHistorique();
 			historique.setIdPhase(1);
 			historique.setDatePhase(LocalDate.now());
 			historique.setIdDemande(demande.getIdDemande());
+			historique.setUserName(demande.getUserName());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			throw e;
@@ -114,7 +115,7 @@ public class DemandeServiceImpl implements DemandeService {
 			}
 
 			// save into demandePieceJointe
-			if(!(demande.getPieces().isEmpty() )) {
+			if(!(demande.getPieces()==null)) {
 			uploadDocumentDemande(demande.getPieces(), demande);
 			}
 			// Historique
@@ -122,6 +123,7 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdPhase(demande.getIdPhase());
 			historique.setDatePhase(LocalDate.now());
 			historique.setIdDemande(demande.getIdDemande());
+			historique.setUserName(demande.getUserName());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			throw e;
@@ -161,6 +163,11 @@ public class DemandeServiceImpl implements DemandeService {
 	@Override
 	public List<DemandeCredit> findAllByUser(Integer id) {
 		return (demandeCreditRepository.findAllByIdUser(id) != null) ? demandeCreditRepository.findAllByIdUser(id) : null;
+	}
+
+	@Override
+	public List<DemandeCredit> findByAgence(Integer id) {
+		return (demandeCreditRepository.findByAgence(id) != null) ? demandeCreditRepository.findByAgence(id) : null;
 	}
 
 }

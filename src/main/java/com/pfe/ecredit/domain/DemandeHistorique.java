@@ -23,5 +23,6 @@ public class DemandeHistorique {
 	private Integer idPhase;
 	private LocalDate datePhase;
 	private Integer idDemande;
+	private String userName;
 
 }
