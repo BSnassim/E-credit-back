@@ -56,14 +56,7 @@ public class JwtAuthenticationEndpoint {
 		final Utilisateur user = userService.userExists(authenticationRequest.getEmail());
 
 		return ResponseEntity.ok(new JwtResponse(token,
-				user.getId(), 
-				user.getNom(), 
-				user.getPrenom(), 
-				user.getEmail(), 
-				user.getTel(),  
-				user.getDateNais(),
-				user.getProfil().getHabilitations(),
-				user.getAgence()
+				user.getProfil().getHabilitations()
 				));
 	}
 
