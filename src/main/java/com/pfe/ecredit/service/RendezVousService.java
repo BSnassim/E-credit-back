@@ -7,7 +7,10 @@ import com.pfe.ecredit.domain.DemandeRendezVous;
 public interface RendezVousService {
 
 	public List<DemandeRendezVous> findAllRendezVous();
-	public DemandeRendezVous findRendezVous(Integer id);
+	
+	public List<DemandeRendezVous>  findRendezVousByIdUser(Integer user);
+	
 	public void saveRendezVous(DemandeRendezVous rendezVous);
+	
 	public void DeleteRendezVous(Integer id);
 }

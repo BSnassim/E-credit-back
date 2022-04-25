@@ -16,24 +16,23 @@ public class RendezVousServiceImpl implements RendezVousService {
 
 	@Override
 	public List<DemandeRendezVous> findAllRendezVous() {
-		return (RDVrepo.findAll() != null)? RDVrepo.findAll() : null;
+		return (RDVrepo.findAll() != null) ? RDVrepo.findAll() : null;
 	}
 
 	@Override
-	public DemandeRendezVous findRendezVous(Integer id) {
-		return (RDVrepo.findById(id).isPresent())? RDVrepo.findById(id).get() : null;
+	public List<DemandeRendezVous> findRendezVousByIdUser(Integer user) {
+		return (RDVrepo.findByIdUser(user) != null) ? RDVrepo.findByIdUser(user) : null;
 	}
 
 	@Override
 	public void saveRendezVous(DemandeRendezVous rendezVous) {
 		RDVrepo.save(rendezVous);
-		
+
 	}
+
 	@Override
 	public void DeleteRendezVous(Integer id) {
 		RDVrepo.deleteById(id);
-		
 	}
 
-	
 }
