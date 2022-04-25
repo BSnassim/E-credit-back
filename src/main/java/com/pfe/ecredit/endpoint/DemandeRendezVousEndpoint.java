@@ -28,8 +28,12 @@ public class DemandeRendezVousEndpoint {
 		return rendezVousService.findAllRendezVous();
 	}
 	
+	@GetMapping("/rdv/{user}")
+	public List<DemandeRendezVous >findRendezVousByIdUser(@PathVariable Integer user) {
+		return rendezVousService.findRendezVousByIdUser(user);
+	}
 	
-	
+
 	@PostMapping("/rdv")
 	public void saveRendezVous(@RequestBody DemandeRendezVous RendezVous) {
 		rendezVousService.saveRendezVous(RendezVous);

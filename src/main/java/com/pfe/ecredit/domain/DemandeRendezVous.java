@@ -15,13 +15,12 @@ import lombok.Data;
 @Entity
 @Table
 public class DemandeRendezVous {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_rdv", allocationSize = 1)
 	private Integer idRdv;
 	private String title;
 	private Date dateRdv;
-	private Long IdDemande;
-
+	private Integer IdDemande;
+	private Integer idUser;
 }
