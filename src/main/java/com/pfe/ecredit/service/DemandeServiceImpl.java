@@ -3,7 +3,7 @@ package com.pfe.ecredit.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
-//>>>>>>> origin/master
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -141,13 +141,13 @@ public class DemandeServiceImpl implements DemandeService {
 
 			for (int i = 0; i < listPieceJointe.size(); i++) {
 				if (listPieceJointe.get(i).getFileContent() != null) {
-					listPieceJointe.get(i).setChemin(pathPj + listPieceJointe.get(i).getFileName());
+					listPieceJointe.get(i).setChemin(pathPj + "\\" + demande.getIdDemande() + "\\" + listPieceJointe.get(i).getFileName());
 					listPieceJointe.get(i).setIdDemande(demande.getIdDemande());
 
-					// save info doc in bade
+					// save info doc in db
 					demandePieceJointeRepository.save(listPieceJointe.get(i));
 
-					// save doc sue repertoire
+					// save doc in directory
 					FileOutputStream outputStream1 = new FileOutputStream(
 							dir1 + "\\" + listPieceJointe.get(i).getFileName());
 					outputStream1.write(listPieceJointe.get(i).getFileContent());

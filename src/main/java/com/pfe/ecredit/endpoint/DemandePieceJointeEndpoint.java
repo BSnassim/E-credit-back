@@ -1,5 +1,7 @@
 package com.pfe.ecredit.endpoint;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class DemandePieceJointeEndpoint {
 	}
 	
 	@GetMapping("/piecesJointes/demande/{id}")
-	public List<DemandePieceJointe> findByDemande(@PathVariable Integer id) {
+	public List<DemandePieceJointe> findByDemande(@PathVariable Integer id) throws IOException {
 		return PiecesJointesService.findByDemande(id);
 	}
 	
