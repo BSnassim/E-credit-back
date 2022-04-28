@@ -3,7 +3,6 @@ package com.pfe.ecredit.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,42 +10,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table
-public class DemandeCredit {
-
+public class SimulationCredit {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
-	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_DM", allocationSize = 1)
-	private Integer idDemande;
+	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_SIM", allocationSize = 1)
+	private Integer idSim;
+	private Integer idUser;
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
-	private String sitFamiliale;
 	private String typePiece;
 	private String numPiece;
 	private String numCompte;
 	private Date dateCompte;
-	private Integer nbreEcheance;
-	private BigDecimal montant;
-	private String unite;
-	private LocalDate datePhase;
-	private Integer idPhase;
-	private Integer idTypeCredit;
-	private Integer idUser;
-	private String complement;
+	private Date dateNaissance;
+	private String sitFamiliale;
+	private String sitMedicale;
+	private String sitProfessionnel;
 	private Integer gsm;
-	@Transient
-	private List<DemandeGarantie> garantie;
+	private BigDecimal montant;
+	private Integer nbreEcheance;
+	private String unite;
+	private Integer idTypeCredit;
+	private BigDecimal salaire;
+	private BigDecimal autreRevenu;
+	private String sitLogement;
 
-	@Transient
-	private List<DemandePieceJointe> pieces;
-	
-	@Transient
-	private String userName;
 }
