@@ -22,7 +22,7 @@ public class SimulationCreditEndpoint {
 	@Autowired
 	private SimulationCreditService service;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public List<SimulationCredit> findAllSimulation(){
 		return service.findAll();
 	}
@@ -32,7 +32,7 @@ public class SimulationCreditEndpoint {
 		return service.findByUser(id);
 	}
 	
-	@PostMapping("/")
+	@PostMapping("")
 	public void saveSimulation(@RequestBody SimulationCredit sim) throws Exception {
 		service.saveSimulation(sim);
 	}
