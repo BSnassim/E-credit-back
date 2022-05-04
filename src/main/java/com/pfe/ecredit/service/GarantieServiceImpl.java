@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
-import com.pfe.ecredit.repositories.SiNatureGarantieRepository;
-import com.pfe.ecredit.repositories.SiTypeGarantieRepository;
 
 @Service
 public class GarantieServiceImpl implements GarantieService {
