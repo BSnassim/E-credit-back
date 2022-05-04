@@ -40,5 +40,5 @@ public class SimulationCredit {
 	private BigDecimal salaire;
 	private BigDecimal autreRevenu;
 	private String sitLogement;
-
+	private String resultat;
 }
