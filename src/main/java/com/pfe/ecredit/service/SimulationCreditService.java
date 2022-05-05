@@ -8,6 +8,7 @@ public interface SimulationCreditService {
 	
 	public List<SimulationCredit> findAll();
 	public List<SimulationCredit> findByUser(Integer id);
+	public SimulationCredit findById(Integer id);
 	public void saveSimulation(SimulationCredit sim);
 
 }

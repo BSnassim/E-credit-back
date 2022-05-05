@@ -29,4 +29,9 @@ public class SimulationCreditServiceImpl implements SimulationCreditService {
 		rep.save(sim);
 	}
 
+	@Override
+	public SimulationCredit findById(Integer id) {
+		return (rep.findById(id).isPresent()) ? rep.findById(id).get() : null;
+	}
+
 }

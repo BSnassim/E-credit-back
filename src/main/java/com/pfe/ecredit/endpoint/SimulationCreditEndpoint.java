@@ -28,8 +28,8 @@ public class SimulationCreditEndpoint {
 	}
 	
 	@GetMapping("/{id}")
-	public List<SimulationCredit> findSimulationByUser(@PathVariable Integer id) {
-		return service.findByUser(id);
+	public SimulationCredit findSimulationByID(@PathVariable Integer id) {
+		return service.findById(id);
 	}
 	
 	@PostMapping("")
