@@ -28,13 +28,13 @@ public class SimulationCreditEndpoint {
 	}
 	
 	@GetMapping("/{id}")
-	public List<SimulationCredit> findSimulationByUser(@PathVariable Integer id) {
-		return service.findByUser(id);
+	public SimulationCredit findSimulationByID(@PathVariable Integer id) {
+		return service.findById(id);
 	}
 	
 	@PostMapping("")
-	public void saveSimulation(@RequestBody SimulationCredit sim) throws Exception {
-		service.saveSimulation(sim);
+	public Integer saveSimulation(@RequestBody SimulationCredit sim) throws Exception {
+		return service.saveSimulation(sim);
 	}
 
 }

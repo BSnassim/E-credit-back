@@ -25,8 +25,14 @@ public class SimulationCreditServiceImpl implements SimulationCreditService {
 	}
 
 	@Override
-	public void saveSimulation(SimulationCredit sim) {
+	public Integer saveSimulation(SimulationCredit sim) {
 		rep.save(sim);
+		return sim.getIdSim();
+	}
+
+	@Override
+	public SimulationCredit findById(Integer id) {
+		return (rep.findById(id).isPresent()) ? rep.findById(id).get() : null;
 	}
 
 }
