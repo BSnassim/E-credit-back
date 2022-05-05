@@ -25,8 +25,9 @@ public class SimulationCreditServiceImpl implements SimulationCreditService {
 	}
 
 	@Override
-	public void saveSimulation(SimulationCredit sim) {
+	public Integer saveSimulation(SimulationCredit sim) {
 		rep.save(sim);
+		return sim.getIdSim();
 	}
 
 	@Override

@@ -18,6 +18,6 @@ public interface DemandeCreditRepository  extends JpaRepository<DemandeCredit, I
 	@Query(value = "SELECT d from DemandeCredit d, Utilisateur u, SiAgence a WHERE d.idUser = u.id and u.agence.idAgence = ?1 group by "
 			+ "d.idDemande, d.nom, d.prenom, d.sitFamiliale, d.typePiece, d.numPiece, d.dateNaissance\r\n"
 			+ ", d.numCompte, d.dateCompte, d.idTypeCredit, d.montant, d.unite, d.nbreEcheance, d.idPhase,\r\n"
-			+ "d.datePhase, d.idUser, d.complement, d.gsm")
+			+ "d.datePhase, d.idUser, d.complement, d.gsm, d.idSimulation")
 	List<DemandeCredit> findByAgence(Integer id);
 }
