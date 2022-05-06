@@ -41,6 +41,7 @@ public class DemandeCredit {
 	private Integer idUser;
 	private String complement;
 	private Integer gsm;
+	private Integer idSimulation;
 	@Transient
 	private List<DemandeGarantie> garantie;
 
