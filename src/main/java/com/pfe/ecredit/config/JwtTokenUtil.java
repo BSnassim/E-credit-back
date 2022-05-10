@@ -7,22 +7,32 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtTokenUtil implements Serializable {
 
 	private static final long serialVersionUID = -2550185165626007488L;
 
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-
 	@Value("${jwt.secret}")
 	private String secret;
+	
+	@Value("${jwt.expirationDateInMs}")
+	private int jwtExpirationInMs; 
+	
+	public void setJwtExpirationInMs(int jwtExpirationInMs) {
+		this.jwtExpirationInMs = jwtExpirationInMs;
+	}
 
 	// retrieve username from jwt token
 	public String getUsernameFromToken(String token) {
@@ -65,13 +75,20 @@ public class JwtTokenUtil implements Serializable {
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
 
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+				.setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
 	// validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
+		try {
 		final String username = getUsernameFromToken(token);
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+		}
+		catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
+			throw new BadCredentialsException("INVALID_CREDENTIALS", ex);
+		} catch (ExpiredJwtException ex) {
+			throw ex;
+		}
 	}
 }
