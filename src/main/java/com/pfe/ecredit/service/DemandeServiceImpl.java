@@ -162,12 +162,12 @@ public class DemandeServiceImpl implements DemandeService {
 
 	@Override
 	public List<DemandeCredit> findAllByUser(Integer id) {
-		return (demandeCreditRepository.findAllByIdUser(id) != null) ? demandeCreditRepository.findAllByIdUser(id) : null;
+		return (demandeCreditRepository.findAllByIdUserOrderByIdDemande(id) != null) ? demandeCreditRepository.findAllByIdUserOrderByIdDemande(id) : null;
 	}
 
 	@Override
 	public List<DemandeCredit> findByAgence(Integer id) {
-		return (demandeCreditRepository.findByAgence(id) != null) ? demandeCreditRepository.findByAgence(id) : null;
+		return (demandeCreditRepository.findByAgenceOrderByIdDemande(id) != null) ? demandeCreditRepository.findByAgenceOrderByIdDemande(id) : null;
 	}
 
 }
