@@ -52,9 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		antMatchers("/administration/**").hasRole("Administration").
 		// all requests besides login need to be authenticated
 				anyRequest().authenticated().and().
+				// exception handling
+				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
 				// make sure we use stateless session; session won't be used to store user info
-				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 		// Adding a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
