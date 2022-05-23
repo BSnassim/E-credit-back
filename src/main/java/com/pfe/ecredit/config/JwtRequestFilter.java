@@ -17,8 +17,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.pfe.ecredit.service.JwtUserDetailsService;
 
-import io.jsonwebtoken.ExpiredJwtException;
-
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
