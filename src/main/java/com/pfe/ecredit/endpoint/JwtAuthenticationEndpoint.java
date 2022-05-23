@@ -70,7 +70,7 @@ public class JwtAuthenticationEndpoint {
 		}
 	}
 	
-	@RequestMapping(value = "/authenticate/getUserByToken/{token}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getUserByToken/{token}", method = RequestMethod.GET)
 	public Utilisateur getUserByToken(@PathVariable String token) {
 		String email = jwtTokenUtil.getUsernameFromToken(token);
 		return userService.userExists(email);
