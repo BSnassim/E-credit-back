@@ -28,8 +28,5 @@ return (repo.findAllByIdDemandeOrderByDatePhase(id) != null)? repo.findAllByIdDe
 	@Override
 	public List<DemandeHistorique> findHistoriqueDemandeRecente(String id) {
 		return repo.findByIdUserAndMaxDatePhase(id);
-
-		
 	}
-
 }
