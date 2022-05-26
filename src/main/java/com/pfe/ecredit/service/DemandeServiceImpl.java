@@ -162,7 +162,9 @@ public class DemandeServiceImpl implements DemandeService {
 	}
 
 	@Override
+
 	public List<DemandeCredit> findAllByUser(String id) {
+
 		return (demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) != null) ? demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) : null;
 	}
 

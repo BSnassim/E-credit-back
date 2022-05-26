@@ -16,17 +16,22 @@ import com.pfe.ecredit.service.DemandeHistoriqueService;
 @CrossOrigin
 @RestController
 public class DemandeHistoriqueEndpoint {
-	
+
 	@Autowired
 	private DemandeHistoriqueService historiqueService;
-	
+
 	@GetMapping("/historique")
-	public List<DemandeHistorique> findAllHistorique(){
+	public List<DemandeHistorique> findAllHistorique() {
 		return historiqueService.findAll();
 	}
-	
+
 	@GetMapping("/historique/ByDemande/{id}")
 	public List<DemandeHistorique> findhistoriqueByDemande(@PathVariable Integer id) {
 		return historiqueService.findByDemande(id);
-		}
+	}
+
+	@GetMapping("/historique/DemandeRecente/ByUser/{id}")
+	public List<DemandeHistorique> findHistoriqueDemandeRecente(@PathVariable String id) {
+		return historiqueService.findHistoriqueDemandeRecente(id);
+	}
 }
