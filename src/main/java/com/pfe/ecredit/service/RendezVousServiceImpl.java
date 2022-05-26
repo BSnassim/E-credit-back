@@ -20,8 +20,8 @@ public class RendezVousServiceImpl implements RendezVousService {
 	}
 
 	@Override
-	public List<DemandeRendezVous> findRendezVousByIdUser(Integer user) {
-		return (RDVrepo.findByIdUser(user) != null) ? RDVrepo.findByIdUser(user) : null;
+	public List<DemandeRendezVous> findRendezVousByIdUser(String id) {
+		return (RDVrepo.findByIdUser(id) != null) ? RDVrepo.findByIdUser(id) : null;
 	}
 
 	@Override

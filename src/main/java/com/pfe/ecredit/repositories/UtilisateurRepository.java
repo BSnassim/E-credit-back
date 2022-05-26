@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.pfe.ecredit.domain.Utilisateur;
 
 @Repository
-public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, String>{
 	
 	public Optional<Utilisateur> findByEmail(String email);
 

@@ -22,5 +22,5 @@ public class DemandeRendezVous {
 	private String title;
 	private Date dateRdv;
 	private Integer IdDemande;
-	private Integer idUser;
+	private String idUser;
 }

@@ -24,7 +24,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur findUser(Integer id) {
+	public Utilisateur findUser(String id) {
 		return (repo.findById(id).isPresent())? repo.findById(id).get() : null;
 	}
 	
@@ -51,12 +51,12 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void DeleteUser(Integer id) {
+	public void DeleteUser(String id) {
 		repo.deleteById(id);
 	}
 
 	@Override
-	public void DeleteUsers(List<Integer> ids) {
+	public void DeleteUsers(List<String> ids) {
 		repo.deleteAllById(ids);		
 	}
 

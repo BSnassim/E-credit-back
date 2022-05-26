@@ -18,9 +18,7 @@ import lombok.Data;
 @Table
 public class Utilisateur {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
-	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_USER", allocationSize = 1)
-	private Integer id;
+	private String id;
 	private String nom;
 	private String prenom;
 	private String password;
