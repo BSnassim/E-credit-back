@@ -20,4 +20,6 @@ public interface DemandeCreditRepository  extends JpaRepository<DemandeCredit, I
 			+ ", d.numCompte, d.dateCompte, d.idTypeCredit, d.montant, d.unite, d.nbreEcheance, d.idPhase,\r\n"
 			+ "d.datePhase, d.idUser, d.complement, d.gsm, d.idSimulation")
 	List<DemandeCredit> findByAgenceOrderByDatePhase(Integer id);
+	
+	
 }

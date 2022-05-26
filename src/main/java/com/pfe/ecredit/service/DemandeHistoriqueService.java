@@ -8,5 +8,6 @@ public interface DemandeHistoriqueService {
 	
 	public List<DemandeHistorique> findAll();
 	public List<DemandeHistorique> findByDemande(Integer id);
+	public List<DemandeHistorique> findHistoriqueDemandeRecente(Integer id);
 
 }
