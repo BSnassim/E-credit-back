@@ -3,7 +3,7 @@ package com.pfe.ecredit.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -86,9 +86,9 @@ public class DemandeServiceImpl implements DemandeService {
 			// save into Historique
 			DemandeHistorique historique = new DemandeHistorique();
 			historique.setIdPhase(1);
-			historique.setDatePhase(LocalDate.now());
+			historique.setDatePhase(LocalDateTime.now());
 			historique.setIdDemande(demande.getIdDemande());
-			historique.setUserName(demande.getUserName());
+			historique.setUserId(demande.getChangerId());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			throw e;
@@ -107,6 +107,7 @@ public class DemandeServiceImpl implements DemandeService {
 
 			if (!(demande.getGarantie().isEmpty() )) {
 				for (DemandeGarantie i : demande.getGarantie()) {
+					i.setIdDemande(demande.getIdDemande());
 					i.setIdNatureGarantie(i.getNature().getIdNature());
 					i.setIdTypeGrt(i.getType().getId());
 
@@ -121,9 +122,9 @@ public class DemandeServiceImpl implements DemandeService {
 			// Historique
 			DemandeHistorique historique = new DemandeHistorique();
 			historique.setIdPhase(demande.getIdPhase());
-			historique.setDatePhase(LocalDate.now());
+			historique.setDatePhase(LocalDateTime.now());
 			historique.setIdDemande(demande.getIdDemande());
-			historique.setUserName(demande.getUserName());
+			historique.setUserId(demande.getChangerId());
 			demandeHistoriqueRepository.save(historique);
 		} catch (Exception e) {
 			throw e;
@@ -161,7 +162,9 @@ public class DemandeServiceImpl implements DemandeService {
 	}
 
 	@Override
-	public List<DemandeCredit> findAllByUser(Integer id) {
+
+	public List<DemandeCredit> findAllByUser(String id) {
+
 		return (demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) != null) ? demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) : null;
 	}
 

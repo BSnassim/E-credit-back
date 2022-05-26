@@ -28,9 +28,9 @@ public class DemandeRendezVousEndpoint {
 		return rendezVousService.findAllRendezVous();
 	}
 	
-	@GetMapping("/rdv/{user}")
-	public List<DemandeRendezVous >findRendezVousByIdUser(@PathVariable Integer user) {
-		return rendezVousService.findRendezVousByIdUser(user);
+	@GetMapping("/rdv/{id}")
+	public List<DemandeRendezVous >findRendezVousByIdUser(@PathVariable String id) {
+		return rendezVousService.findRendezVousByIdUser(id);
 	}
 	
 

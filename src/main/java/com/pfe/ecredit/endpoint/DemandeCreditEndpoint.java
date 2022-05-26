@@ -40,7 +40,7 @@ public class DemandeCreditEndpoint {
 	}
 	
 	@GetMapping("/demande/ByUser/{id}")
-	public List<DemandeCredit> findAllByUser(@PathVariable Integer id){
+	public List<DemandeCredit> findAllByUser(@PathVariable String id){
 		return DemandeService.findAllByUser(id);
 	}
 	

@@ -38,7 +38,7 @@ public class DemandeCredit {
 	private LocalDate datePhase;
 	private Integer idPhase;
 	private Integer idTypeCredit;
-	private Integer idUser;
+	private String idUser;
 	private String complement;
 	private Integer gsm;
 	private Integer idSimulation;
@@ -49,5 +49,6 @@ public class DemandeCredit {
 	private List<DemandePieceJointe> pieces;
 	
 	@Transient
-	private String userName;
+	private String changerId;
+	
 }

@@ -31,7 +31,7 @@ public class DemandeHistoriqueEndpoint {
 	}
 
 	@GetMapping("/historique/DemandeRecente/ByUser/{id}")
-	public List<DemandeHistorique> findHistoriqueDemandeRecente(@PathVariable Integer id) {
+	public List<DemandeHistorique> findHistoriqueDemandeRecente(@PathVariable String id) {
 		return historiqueService.findHistoriqueDemandeRecente(id);
 	}
 }

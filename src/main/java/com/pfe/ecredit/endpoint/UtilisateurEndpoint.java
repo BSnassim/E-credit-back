@@ -29,12 +29,12 @@ public class UtilisateurEndpoint {
 		return userService.findAllUser();
 	}
 	
-//	@GetMapping("/users/{id}")
-//	public Utilisateur findUtilisateur(@PathVariable Integer id) {
-//		return userService.findUser(id);
-//	}
+	@GetMapping("/users/{id}")
+	public Utilisateur findUtilisateur(@PathVariable String id) {
+		return userService.findUser(id);
+	}
 	
-	@GetMapping("/users/{email}")
+	@GetMapping("/users/ByEmail/{email}")
 	public Utilisateur userExists(@PathVariable String email) {
 		return userService.userExists(email);
 	}
@@ -50,12 +50,12 @@ public class UtilisateurEndpoint {
 	}
 	
 	@DeleteMapping("/users/{id}")
-	public void deleteUtilisateur(@PathVariable Integer id) {
+	public void deleteUtilisateur(@PathVariable String id) {
 		userService.DeleteUser(id);
 	}
 
 	@DeleteMapping("/users/deleteAll/{ids}")
-	public void deleteUtilisateurs(@PathVariable List<Integer> ids) {
+	public void deleteUtilisateurs(@PathVariable List<String> ids) {
 		userService.DeleteUsers(ids);
 	}
 

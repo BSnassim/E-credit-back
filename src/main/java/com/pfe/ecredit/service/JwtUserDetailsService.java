@@ -27,11 +27,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 	UtilisateurRepository repo;
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Optional<Utilisateur> user = repo.findByEmail(email);
+	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+		Optional<Utilisateur> user = repo.findById(id);
 		List<Habilitation> roles = user.get().getProfil().getHabilitations();
 		if (user.isPresent()) {
-			return new User(user.get().getEmail(), 
+			return new User(user.get().getId(), 
 					user.get().getPassword(), 
 					true,
 					true,
@@ -40,7 +40,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 					getAuthorities(roles)
 					);
 		} else {
-			throw new UsernameNotFoundException("User not found with email: " + email);
+			throw new UsernameNotFoundException("User not found with ID: " + id);
 		}
 	}
 	

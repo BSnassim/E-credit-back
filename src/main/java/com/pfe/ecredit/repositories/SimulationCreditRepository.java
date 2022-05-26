@@ -10,6 +10,6 @@ import com.pfe.ecredit.domain.SimulationCredit;
 @Repository
 public interface SimulationCreditRepository extends JpaRepository<SimulationCredit, Integer> {
 	
-	public List<SimulationCredit> findAllByIdUser(Integer id);
+	public List<SimulationCredit> findAllByIdUser(String id);
 
 }

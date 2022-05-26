@@ -10,6 +10,7 @@ import com.pfe.ecredit.domain.DemandeHistorique;
 
 @Repository
 public interface DemandeHistoriqueRepository extends JpaRepository<DemandeHistorique, Integer> {
+	
 
 	List<DemandeHistorique> findAllByIdDemande(Integer id);
 
@@ -17,5 +18,7 @@ public interface DemandeHistoriqueRepository extends JpaRepository<DemandeHistor
 			+ "			  from DemandeCredit a\r\n"
 			+ "			 where a.datePhase = (select max(datePhase) from DemandeCredit b where b.idUser=?1 ) )")
 
-	List<DemandeHistorique> findByIdUserAndMaxDatePhase(Integer id);
+	List<DemandeHistorique> findByIdUserAndMaxDatePhase(String id);
+	List<DemandeHistorique> findAllByIdDemandeOrderByDatePhase(Integer id);
+
 }

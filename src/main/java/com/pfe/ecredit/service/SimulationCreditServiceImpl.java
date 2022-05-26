@@ -20,7 +20,7 @@ public class SimulationCreditServiceImpl implements SimulationCreditService {
 	}
 
 	@Override
-	public List<SimulationCredit> findByUser(Integer id) {
+	public List<SimulationCredit> findByUser(String id) {
 		return (rep.findAllByIdUser(id) != null) ? rep.findAllByIdUser(id) : null;
 	}
 

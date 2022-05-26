@@ -8,7 +8,7 @@ public interface RendezVousService {
 
 	public List<DemandeRendezVous> findAllRendezVous();
 	
-	public List<DemandeRendezVous>  findRendezVousByIdUser(Integer user);
+	public List<DemandeRendezVous>  findRendezVousByIdUser(String id);
 	
 	public void saveRendezVous(DemandeRendezVous rendezVous);
 	
