@@ -12,6 +12,6 @@ import com.pfe.ecredit.domain.DemandeRendezVous;
 @Repository
 public interface DemandeRendezVousRepository extends JpaRepository<DemandeRendezVous, Integer> {
 
-	public List<DemandeRendezVous> findByIdUser(Integer user);
+	public List<DemandeRendezVous> findByIdUser(String id);
 
 }

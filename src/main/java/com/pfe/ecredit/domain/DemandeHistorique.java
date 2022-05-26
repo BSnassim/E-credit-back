@@ -1,6 +1,6 @@
 package com.pfe.ecredit.domain;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,8 +21,8 @@ public class DemandeHistorique {
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_HIS", allocationSize = 1)
 	private Integer idTrt;
 	private Integer idPhase;
-	private LocalDate datePhase;
+	private LocalDateTime datePhase;
 	private Integer idDemande;
-	private String userName;
+	private String userId;
 
 }

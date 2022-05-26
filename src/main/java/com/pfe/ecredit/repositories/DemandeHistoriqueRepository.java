@@ -10,5 +10,5 @@ import com.pfe.ecredit.domain.DemandeHistorique;
 @Repository
 public interface DemandeHistoriqueRepository extends JpaRepository<DemandeHistorique, Integer>{
 	
-	List<DemandeHistorique> findAllByIdDemande(Integer id);
+	List<DemandeHistorique> findAllByIdDemandeOrderByDatePhase(Integer id);
 }

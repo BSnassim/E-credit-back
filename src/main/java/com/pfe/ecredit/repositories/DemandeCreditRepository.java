@@ -13,7 +13,7 @@ public interface DemandeCreditRepository  extends JpaRepository<DemandeCredit, I
 
 	public Optional<DemandeCredit> findByNumPiece(String num);
 	
-	public List<DemandeCredit> findAllByIdUserOrderByDatePhase(Integer id);
+	public List<DemandeCredit> findAllByIdUserOrderByDatePhase(String id);
 	
 	@Query(value = "SELECT d from DemandeCredit d, Utilisateur u, SiAgence a WHERE d.idUser = u.id and u.agence.idAgence = ?1 group by "
 			+ "d.idDemande, d.nom, d.prenom, d.sitFamiliale, d.typePiece, d.numPiece, d.dateNaissance\r\n"

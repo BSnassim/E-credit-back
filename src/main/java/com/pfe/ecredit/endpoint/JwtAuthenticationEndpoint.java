@@ -46,14 +46,14 @@ public class JwtAuthenticationEndpoint {
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
-		authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
+		authenticate(authenticationRequest.getId(), authenticationRequest.getPassword());
 
 		final UserDetails userDetails = userDetailsService
-				.loadUserByUsername(authenticationRequest.getEmail());
+				.loadUserByUsername(authenticationRequest.getId());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		
-		final Utilisateur user = userService.userExists(authenticationRequest.getEmail());
+		final Utilisateur user = userService.findUser(authenticationRequest.getId());
 
 		return ResponseEntity.ok(new JwtResponse(token,
 				user.getProfil().getHabilitations()
@@ -72,8 +72,8 @@ public class JwtAuthenticationEndpoint {
 	
 	@RequestMapping(value = "/getUserByToken/{token}", method = RequestMethod.GET)
 	public Utilisateur getUserByToken(@PathVariable String token) {
-		String email = jwtTokenUtil.getUsernameFromToken(token);
-		return userService.userExists(email);
+		String id = jwtTokenUtil.getUsernameFromToken(token);
+		return userService.findUser(id);
 	}
 	
 	@RequestMapping(value = "authenticate/checkPassword", method = RequestMethod.GET)
