@@ -21,7 +21,7 @@ public class SimulationCredit {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_SIM", allocationSize = 1)
 	private Integer idSim;
-	private Integer idUser;
+	private String idUser;
 	private String nom;
 	private String prenom;
 	private String typePiece;

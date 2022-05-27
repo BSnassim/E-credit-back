@@ -16,7 +16,7 @@ public interface DemandeHistoriqueRepository extends JpaRepository<DemandeHistor
 
 	@Query(value = " select d from DemandeHistorique d where d.idDemande=(SELECT a.idDemande\r\n"
 			+ "			  from DemandeCredit a\r\n"
-			+ "			 where a.datePhase = (select max(datePhase) from DemandeCredit b where b.idUser=?1 ) )")
+			+ "			 where  a.idUser=?1  and a.datePhase = (select max(datePhase) from DemandeCredit b where b.idUser=?1 ) )")
 
 	List<DemandeHistorique> findByIdUserAndMaxDatePhase(String id);
 	List<DemandeHistorique> findAllByIdDemandeOrderByDatePhase(Integer id);
