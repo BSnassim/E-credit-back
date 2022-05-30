@@ -47,8 +47,8 @@ public class DemandeCredit {
 
 	@Transient
 	private List<DemandePieceJointe> pieces;
-	
+
 	@Transient
 	private String changerId;
-	
+
 }
