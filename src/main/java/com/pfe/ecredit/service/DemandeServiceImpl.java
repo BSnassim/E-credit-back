@@ -2,7 +2,6 @@ package com.pfe.ecredit.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,6 +14,7 @@ import com.pfe.ecredit.domain.DemandeCredit;
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.domain.DemandeHistorique;
 import com.pfe.ecredit.domain.DemandePieceJointe;
+import com.pfe.ecredit.domain.DemandeRendezVous;
 import com.pfe.ecredit.domain.Utilisateur;
 import com.pfe.ecredit.repositories.DemandeCreditRepository;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
@@ -37,6 +37,9 @@ public class DemandeServiceImpl implements DemandeService {
 
 	@Autowired
 	private UtilisateurService userService;
+	
+	@Autowired
+	private RendezVousService rdvService;
 
 	@Autowired
 	private MailService mailService;
@@ -70,7 +73,7 @@ public class DemandeServiceImpl implements DemandeService {
 		try {
 			// save into demandeCredit
 			demande.setIdPhase(1);
-			demande.setDatePhase(LocalDate.now());
+			demande.setDatePhase(LocalDateTime.now());
 			demandeCreditRepository.save(demande);
 
 			// save into demandeGarantie
@@ -96,6 +99,12 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdDemande(demande.getIdDemande());
 			historique.setUserId(demande.getChangerId());
 			demandeHistoriqueRepository.save(historique);
+
+			// email notification
+			Utilisateur user = userService.findUser(demande.getIdUser());
+			String name = user.getNom() + " " + user.getPrenom();
+			mailService.sendEmailInsertion(user.getEmail(), name, demande.getIdDemande());
+
 		} catch (Exception e) {
 			throw e;
 		}
@@ -134,10 +143,17 @@ public class DemandeServiceImpl implements DemandeService {
 			demandeHistoriqueRepository.save(historique);
 
 			// Email notification
+			Utilisateur user = userService.findUser(demande.getIdUser());
+			String name = user.getNom() + " " + user.getPrenom();
 			if (demande.getIdPhase() == 4) {
-				Utilisateur user = userService.findUser(demande.getIdUser());
-				String name = user.getNom() + " " + user.getPrenom();
 				mailService.sendEmailComplement(user.getEmail(), name, demande.getComplement(), demande.getIdDemande());
+			}
+			if (demande.getIdPhase() == 3) {
+				mailService.sendEmailRejection(user.getEmail(), name, demande.getIdDemande());
+			}
+			if (demande.getIdPhase() == 2) {
+				DemandeRendezVous rdv = rdvService.findRendezVousByDemande(demande.getIdDemande());
+				mailService.sendEmailRDV(user.getEmail(), name, rdv.getDateRdv(), demande.getIdDemande());
 			}
 
 		} catch (Exception e) {

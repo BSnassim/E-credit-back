@@ -21,7 +21,7 @@ public class RendezVousServiceImpl implements RendezVousService {
 
 	@Override
 	public List<DemandeRendezVous> findRendezVousByIdUser(String id) {
-		return (RDVrepo.findByIdUser(id) != null) ? RDVrepo.findByIdUser(id) : null;
+		return (RDVrepo.findAllByIdUser(id) != null) ? RDVrepo.findAllByIdUser(id) : null;
 	}
 
 	@Override
@@ -33,6 +33,11 @@ public class RendezVousServiceImpl implements RendezVousService {
 	@Override
 	public void DeleteRendezVous(Integer id) {
 		RDVrepo.deleteById(id);
+	}
+
+	@Override
+	public DemandeRendezVous findRendezVousByDemande(Integer id) {
+		return (RDVrepo.findByIdDemande(id).isPresent() ? RDVrepo.findByIdDemande(id).get() : null);
 	}
 
 }

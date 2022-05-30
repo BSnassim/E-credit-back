@@ -10,6 +10,8 @@ public interface RendezVousService {
 	
 	public List<DemandeRendezVous>  findRendezVousByIdUser(String id);
 	
+	public DemandeRendezVous findRendezVousByDemande(Integer id);
+	
 	public void saveRendezVous(DemandeRendezVous rendezVous);
 	
 	public void DeleteRendezVous(Integer id);
