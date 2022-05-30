@@ -1,6 +1,6 @@
 package com.pfe.ecredit.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +21,6 @@ public class DemandeRendezVous {
 	private Integer idRdv;
 	private String title;
 	private Date dateRdv;
-	private Integer IdDemande;
+	private Integer idDemande;
 	private String idUser;
 }

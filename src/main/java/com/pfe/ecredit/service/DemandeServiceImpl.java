@@ -2,7 +2,6 @@ package com.pfe.ecredit.service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,6 +14,8 @@ import com.pfe.ecredit.domain.DemandeCredit;
 import com.pfe.ecredit.domain.DemandeGarantie;
 import com.pfe.ecredit.domain.DemandeHistorique;
 import com.pfe.ecredit.domain.DemandePieceJointe;
+import com.pfe.ecredit.domain.DemandeRendezVous;
+import com.pfe.ecredit.domain.Utilisateur;
 import com.pfe.ecredit.repositories.DemandeCreditRepository;
 import com.pfe.ecredit.repositories.DemandeGarantieRepository;
 import com.pfe.ecredit.repositories.DemandeHistoriqueRepository;
@@ -34,6 +35,15 @@ public class DemandeServiceImpl implements DemandeService {
 	@Autowired
 	private DemandeHistoriqueRepository demandeHistoriqueRepository;
 
+	@Autowired
+	private UtilisateurService userService;
+	
+	@Autowired
+	private RendezVousService rdvService;
+
+	@Autowired
+	private MailService mailService;
+
 	@Override
 	public List<DemandeCredit> findAllDemande() {
 		return (demandeCreditRepository.findAll() != null) ? demandeCreditRepository.findAll() : null;
@@ -51,7 +61,6 @@ public class DemandeServiceImpl implements DemandeService {
 						&& demandeCreditRepository.findByNumPiece(num).get().getIdPhase() != 3));
 	}
 
-
 	@Override
 	public void DeleteDemande(Integer id) {
 		demandeCreditRepository.deleteById(id);
@@ -64,7 +73,7 @@ public class DemandeServiceImpl implements DemandeService {
 		try {
 			// save into demandeCredit
 			demande.setIdPhase(1);
-			demande.setDatePhase(LocalDate.now());
+			demande.setDatePhase(LocalDateTime.now());
 			demandeCreditRepository.save(demande);
 
 			// save into demandeGarantie
@@ -90,6 +99,12 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdDemande(demande.getIdDemande());
 			historique.setUserId(demande.getChangerId());
 			demandeHistoriqueRepository.save(historique);
+
+			// email notification
+			Utilisateur user = userService.findUser(demande.getIdUser());
+			String name = user.getNom() + " " + user.getPrenom();
+			mailService.sendEmailInsertion(user.getEmail(), name, demande.getIdDemande());
+
 		} catch (Exception e) {
 			throw e;
 		}
@@ -105,7 +120,7 @@ public class DemandeServiceImpl implements DemandeService {
 
 			// save into demandeGarantie
 
-			if (!(demande.getGarantie().isEmpty() )) {
+			if (!(demande.getGarantie().isEmpty())) {
 				for (DemandeGarantie i : demande.getGarantie()) {
 					i.setIdDemande(demande.getIdDemande());
 					i.setIdNatureGarantie(i.getNature().getIdNature());
@@ -116,8 +131,8 @@ public class DemandeServiceImpl implements DemandeService {
 			}
 
 			// save into demandePieceJointe
-			if(!(demande.getPieces()==null)) {
-			uploadDocumentDemande(demande.getPieces(), demande);
+			if (!(demande.getPieces() == null)) {
+				uploadDocumentDemande(demande.getPieces(), demande);
 			}
 			// Historique
 			DemandeHistorique historique = new DemandeHistorique();
@@ -126,11 +141,26 @@ public class DemandeServiceImpl implements DemandeService {
 			historique.setIdDemande(demande.getIdDemande());
 			historique.setUserId(demande.getChangerId());
 			demandeHistoriqueRepository.save(historique);
+
+			// Email notification
+			Utilisateur user = userService.findUser(demande.getIdUser());
+			String name = user.getNom() + " " + user.getPrenom();
+			if (demande.getIdPhase() == 4) {
+				mailService.sendEmailComplement(user.getEmail(), name, demande.getComplement(), demande.getIdDemande());
+			}
+			if (demande.getIdPhase() == 3) {
+				mailService.sendEmailRejection(user.getEmail(), name, demande.getIdDemande());
+			}
+			if (demande.getIdPhase() == 2) {
+				DemandeRendezVous rdv = rdvService.findRendezVousByDemande(demande.getIdDemande());
+				mailService.sendEmailRDV(user.getEmail(), name, rdv.getDateRdv(), demande.getIdDemande());
+			}
+
 		} catch (Exception e) {
 			throw e;
 		}
 	}
-	
+
 	@Transactional
 	private void uploadDocumentDemande(List<DemandePieceJointe> listPieceJointe, DemandeCredit demande)
 			throws Exception {
@@ -142,7 +172,8 @@ public class DemandeServiceImpl implements DemandeService {
 
 			for (int i = 0; i < listPieceJointe.size(); i++) {
 				if (listPieceJointe.get(i).getFileContent() != null) {
-					listPieceJointe.get(i).setChemin(pathPj + "\\" + demande.getIdDemande() + "\\" + listPieceJointe.get(i).getFileName());
+					listPieceJointe.get(i).setChemin(
+							pathPj + "\\" + demande.getIdDemande() + "\\" + listPieceJointe.get(i).getFileName());
 					listPieceJointe.get(i).setIdDemande(demande.getIdDemande());
 
 					// save info doc in db
@@ -165,12 +196,16 @@ public class DemandeServiceImpl implements DemandeService {
 
 	public List<DemandeCredit> findAllByUser(String id) {
 
-		return (demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) != null) ? demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) : null;
+		return (demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) != null)
+				? demandeCreditRepository.findAllByIdUserOrderByDatePhase(id)
+				: null;
 	}
 
 	@Override
 	public List<DemandeCredit> findByAgence(Integer id) {
-		return (demandeCreditRepository.findByAgenceOrderByDatePhase(id) != null) ? demandeCreditRepository.findByAgenceOrderByDatePhase(id) : null;
+		return (demandeCreditRepository.findByAgenceOrderByDatePhase(id) != null)
+				? demandeCreditRepository.findByAgenceOrderByDatePhase(id)
+				: null;
 	}
 
 }
