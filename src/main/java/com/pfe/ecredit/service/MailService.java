@@ -1,7 +1,7 @@
 package com.pfe.ecredit.service;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -74,7 +74,7 @@ public class MailService {
 		javaMailSender.send(mail);
 	}
 	
-	public void sendEmailRDV(String email, String name,Date rdv, Integer idDemande) throws MailException{
+	public void sendEmailRDV(String email, String name,LocalDateTime rdv, Integer idDemande) throws MailException{
 		SimpleMailMessage mail = new SimpleMailMessage();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		String date = formatter.format(rdv);
