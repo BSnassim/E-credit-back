@@ -1,6 +1,6 @@
 package com.pfe.ecredit.domain;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ public class DemandeRendezVous {
 	@SequenceGenerator(name = "SEQUENCE", sequenceName = "SEQ_rdv", allocationSize = 1)
 	private Integer idRdv;
 	private String title;
-	private Date dateRdv;
+	private LocalDateTime dateRdv;
 	private Integer idDemande;
 	private String idUser;
 }
