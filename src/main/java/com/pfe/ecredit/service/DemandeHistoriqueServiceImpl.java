@@ -22,7 +22,8 @@ public class DemandeHistoriqueServiceImpl implements DemandeHistoriqueService {
 	@Override
 	public List<DemandeHistorique> findByDemande(Integer id) {
 
-return (repo.findAllByIdDemandeOrderByDatePhase(id) != null)? repo.findAllByIdDemandeOrderByDatePhase(id) : null;
+		return (repo.findAllByIdDemandeOrderByDatePhase(id) != null) ? repo.findAllByIdDemandeOrderByDatePhase(id)
+				: null;
 	}
 
 	@Override
