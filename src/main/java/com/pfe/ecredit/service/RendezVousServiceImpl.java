@@ -37,7 +37,7 @@ public class RendezVousServiceImpl implements RendezVousService {
 
 	@Override
 	public DemandeRendezVous findRendezVousByDemande(Integer id) {
-		return (RDVrepo.findByIdDemande(id).isPresent() ? RDVrepo.findByIdDemande(id).get() : null);
+		return (RDVrepo.findFirstByIdDemandeOrderByDateRdvDesc(id).isPresent() ? RDVrepo.findFirstByIdDemandeOrderByDateRdvDesc(id).get() : null);
 	}
 
 }

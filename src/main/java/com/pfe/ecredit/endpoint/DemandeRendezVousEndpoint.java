@@ -33,6 +33,11 @@ public class DemandeRendezVousEndpoint {
 		return rendezVousService.findRendezVousByIdUser(id);
 	}
 	
+	@GetMapping("/rdv/ByDemande/{id}")
+	public DemandeRendezVous findRendezVousByDemande(@PathVariable Integer id) {
+		return rendezVousService.findRendezVousByDemande(id);
+	}
+	
 
 	@PostMapping("/rdv")
 	public void saveRendezVous(@RequestBody DemandeRendezVous RendezVous) {

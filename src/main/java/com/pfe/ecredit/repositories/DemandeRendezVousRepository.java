@@ -12,7 +12,6 @@ import com.pfe.ecredit.domain.DemandeRendezVous;
 public interface DemandeRendezVousRepository extends JpaRepository<DemandeRendezVous, Integer> {
 
 	public List<DemandeRendezVous> findAllByIdUser(String id);
-	
-	public Optional<DemandeRendezVous> findByIdDemande(Integer id);
 
+	public Optional<DemandeRendezVous> findFirstByIdDemandeOrderByDateRdvDesc(Integer id);
 }
