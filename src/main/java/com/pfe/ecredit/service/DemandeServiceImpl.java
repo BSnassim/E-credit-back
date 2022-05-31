@@ -29,6 +29,7 @@ public class DemandeServiceImpl implements DemandeService {
 
 	@Autowired
 	private DemandeGarantieRepository demandeGarantieRepository;
+	
 	@Autowired
 	private DemandePieceJointeRepository demandePieceJointeRepository;
 
@@ -193,7 +194,6 @@ public class DemandeServiceImpl implements DemandeService {
 	}
 
 	@Override
-
 	public List<DemandeCredit> findAllByUser(String id) {
 
 		return (demandeCreditRepository.findAllByIdUserOrderByDatePhase(id) != null)
@@ -206,6 +206,11 @@ public class DemandeServiceImpl implements DemandeService {
 		return (demandeCreditRepository.findByAgenceOrderByDatePhase(id) != null)
 				? demandeCreditRepository.findByAgenceOrderByDatePhase(id)
 				: null;
+	}
+
+	@Override
+	public List<DemandeCredit> findAllByYear(Integer idAgence) {
+		return (demandeCreditRepository.findAllByAgenceAndCurrentYear(idAgence) != null) ? demandeCreditRepository.findAllByAgenceAndCurrentYear(idAgence):null;
 	}
 
 }
