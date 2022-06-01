@@ -15,6 +15,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	@Autowired
 	private UtilisateurRepository repo;
 	
+	
+	
 	@Autowired
 	private PasswordEncoderCreation pwEN;
 
@@ -60,4 +62,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		repo.deleteAllById(ids);		
 	}
 
+	@Override
+	public List<Utilisateur> findUsersByIdAgence(Integer id) {
+		return (repo.findByIdAgence(id)!= null)? repo.findByIdAgence(id) : null;
+	}
 }
