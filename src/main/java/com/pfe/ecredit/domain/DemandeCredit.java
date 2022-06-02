@@ -51,4 +51,6 @@ public class DemandeCredit {
 	@Transient
 	private String changerId;
 
+	@Transient
+	private DemandeRendezVous rdv;
 }
