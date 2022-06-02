@@ -1,5 +1,7 @@
 package com.pfe.ecredit.endpoint;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,16 @@ public class UserDetailsEndpoint {
 	@GetMapping("/{id}")
 	public Utilisateur findUtilisateur(@PathVariable String id) {
 		return userService.findUser(id);
+	}
+	
+	@GetMapping("/ByAgence/{id}")
+	public List<Utilisateur> findUtilisateursByAgence(@PathVariable Integer id) {
+		return userService.findUsersByIdAgence(id);
+	}
+	
+	@GetMapping("")
+	public List<Utilisateur> findAllUtilisateur(){
+		return userService.findAllUser();
 	}
 
 }

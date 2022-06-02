@@ -34,10 +34,6 @@ public class UtilisateurEndpoint {
 		return userService.findUser(id);
 	}
 	
-	@GetMapping("/users/ByAgence/{id}")
-	public List<Utilisateur> findUtilisateursByAgence(@PathVariable Integer id) {
-		return userService.findUsersByIdAgence(id);
-	}
 	
 	@GetMapping("/users/ByEmail/{email}")
 	public Utilisateur userExists(@PathVariable String email) {
