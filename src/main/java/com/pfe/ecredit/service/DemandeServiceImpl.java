@@ -153,7 +153,8 @@ public class DemandeServiceImpl implements DemandeService {
 				mailService.sendEmailRejection(user.getEmail(), name, demande.getIdDemande());
 			}
 			if (demande.getIdPhase() == 2) {
-				DemandeRendezVous rdv = rdvService.findRendezVousByDemande(demande.getIdDemande());
+				DemandeRendezVous rdv = demande.getRdv();
+				rdvService.saveRendezVous(rdv);
 				mailService.sendEmailRDV(user.getEmail(), name, rdv.getDateRdv(), demande.getIdDemande());
 			}
 

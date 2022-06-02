@@ -1,7 +1,7 @@
 package com.pfe.ecredit.service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -76,8 +76,8 @@ public class MailService {
 	
 	public void sendEmailRDV(String email, String name,LocalDateTime rdv, Integer idDemande) throws MailException{
 		SimpleMailMessage mail = new SimpleMailMessage();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		String date = formatter.format(rdv);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		String date = rdv.format(formatter);
 		mail.setTo(email);
 		mail.setSubject("Demande de credit : Rendez-vous");
 		mail.setText("Bonjour Monsieur/Madame "+name+", \n\n"
