@@ -15,7 +15,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	@Autowired
 	private UtilisateurRepository repo;
 	
-	
+	@Autowired
+	private MailService mailService;
 	
 	@Autowired
 	private PasswordEncoderCreation pwEN;
@@ -37,13 +38,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	@Override
 	public void saveUser(Utilisateur user) {
-		try {
+		String name = user.getNom() + " " + user.getPrenom();
+		mailService.sendEmailAccountCreation(user.getEmail(), name, user.getPassword());
 		user.setPassword(pwEN.myPasswordEncoder().encode(user.getPassword()));
 		repo.save(user);
-		} catch (javax.persistence.PersistenceException ex) 
-		{
-			System.out.println(ex);
-		}
 	}
 
 	@Override

@@ -22,11 +22,20 @@ public class MailService {
 		this.javaMailSender = javaMailSender;
 	}
 
-	/**
-	 * This function is used to send mail without attachment.
-	 * @param user
-	 * @throws MailException
-	 */
+	public void sendEmailAccountCreation(String email, String name, String password) throws MailException{
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(email);
+		mail.setSubject("Demande de credit");
+		mail.setText("Bonjour Monsieur/Madame "+name+", \n\n"
+				+ "Votre compte E-credit à été créé avec succées.\n"
+				+ "Vous pouvez se connecter à travers votre cin et le mot de passe suivant:\n"
+				+ "Mot de passe: "+ password +"\n\n"
+				+ "Application E-credit GTI - 2022");
+
+		
+		javaMailSender.send(mail);
+	}
+	
 	public void sendEmailInsertion(String email, String name, Integer idDemande) throws MailException{
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(email);
